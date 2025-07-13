@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import ReactMarkdown from 'react-markdown';
 
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,13 +69,17 @@ export function Chatbot() {
                     )}
                     <div
                       className={cn(
-                        'max-w-[80%] rounded-lg p-3 text-sm',
+                        'max-w-[80%] rounded-lg p-3 text-sm prose dark:prose-invert',
                         m.role === 'user'
                           ? 'bg-primary text-primary-foreground'
                           : 'bg-muted'
                       )}
                     >
-                      {m.content}
+                      {m.role === 'assistant' ? (
+                        <ReactMarkdown>{m.content}</ReactMarkdown>
+                      ) : (
+                        m.content
+                      )}
                     </div>
                      {m.role === 'user' && (
                       <Avatar className="h-8 w-8 border">
