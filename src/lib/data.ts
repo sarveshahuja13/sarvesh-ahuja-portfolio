@@ -1,77 +1,112 @@
 export const experiences = [
   {
     id: 1,
-    role: 'Senior AI Engineer',
-    company: 'TechCorp',
-    date: '2021 - Present',
-    description: 'Lead the development and deployment of machine learning models for predictive analytics and natural language processing. Optimized data pipelines for a 40% increase in processing speed.',
-    technologies: ['Python', 'TensorFlow', 'PyTorch', 'Kubernetes', 'GCP', 'Airflow'],
+    role: 'Software Developer',
+    company: 'Sun Life Global Solutions, Bangalore',
+    date: 'Aug 2024 - Present',
+    projects: [
+      {
+        name: 'Project: CCAS Pega',
+        details: [
+          'Led deployment of a customer data platform to production.',
+          'Collaborated with platform teams to enhance data hydration, boosting system resilience by ~85%.',
+          'Built backend components: 7 Glue Jobs, 5 Lambdas, CI/CD with Jenkins and Terraform.',
+        ],
+      },
+      {
+        name: 'Project: HDP',
+        details: [
+          'Took over project during team transition and led it to production (May 2025).',
+          'Designed and implemented new CI/CD pipelines and serverless data processing jobs.',
+          'Re-architected pipeline to cut costs by 60% while improving system reliability.',
+        ]
+      }
+    ]
   },
   {
     id: 2,
-    role: 'Data Scientist',
-    company: 'DataDriven Inc.',
-    date: '2019 - 2021',
-    description: 'Developed customer churn prediction models, resulting in a 15% reduction in customer attrition. Built and maintained dashboards for visualizing key business metrics.',
-    technologies: ['R', 'Scikit-learn', 'Pandas', 'SQL', 'Tableau', 'AWS Sagemaker'],
-  },
-  {
-    id: 3,
-    role: 'Data Analyst',
-    company: 'Analytics Solutions',
-    date: '2017 - 2019',
-    description: 'Performed exploratory data analysis to identify trends and provide actionable insights to stakeholders. Automated reporting processes, saving 20 hours of manual work per week.',
-    technologies: ['SQL', 'Excel', 'Python', 'Matplotlib', 'Power BI'],
+    role: 'Machine Learning Intern',
+    company: 'Locuz Enterprise Solutions Ltd',
+    date: 'Jun 2023 - Sep 2023',
+    description: [
+        'Built a conversational AI dashboard assistant for green energy clients using GPT-4 and Gradio.',
+        'Integrated InfluxDB for time-series energy data and created real-time dashboards in Grafana.',
+        'Generated Flux queries and enabled voice emotion detection using a custom ML model.',
+    ],
   },
 ];
 
 export const projects = [
   {
     id: 1,
-    title: 'Real-time Anomaly Detection',
-    description: 'A scalable system to detect anomalies in streaming time-series data using autoencoders and Kafka.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'data stream abstract',
-    technologies: ['Python', 'Kafka', 'TensorFlow', 'Flask', 'Docker'],
-    githubUrl: '#',
-    liveUrl: '#',
+    title: 'EmotionGPT – AI Therapist Chatbot',
+    description: 'A voice-based chatbot for mental wellness support.',
+    details: [
+        'Built a voice-based chatbot using GPT-4, Whisper, and emotion detection ML models.',
+        'Integrated via Gradio with HuggingFace for text-to-speech transformation.'
+    ]
   },
   {
     id: 2,
-    title: 'Customer Churn Prediction',
-    description: 'An end-to-end machine learning project to predict customer churn, from data preprocessing to model deployment via a REST API.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'customer relationship chart',
-    technologies: ['Scikit-learn', 'Pandas', 'FastAPI', 'GCP', 'SQL'],
-    githubUrl: '#',
-    liveUrl: '#',
+    title: 'IoT Dashboard for Real-Time Data',
+    description: 'A dashboard for visualizing real-time sensor data from IoT devices.',
+    details: [
+        'Developed a dashboard using AWS TimestreamDB and IoT Core to visualize sensor data.',
+        'Applications: tank level monitoring, smart garbage bins, flood detection systems.'
+    ]
   },
   {
     id: 3,
-    title: 'Sentiment Analysis API',
-    description: 'A microservice that provides sentiment analysis for text inputs, built with a fine-tuned BERT model.',
-    imageUrl: 'https://placehold.co/600x400.png',
-    imageHint: 'natural language processing',
-    technologies: ['PyTorch', 'Hugging Face', 'Docker', 'Kubernetes', 'AWS'],
-    githubUrl: '#',
-    liveUrl: null,
+    title: 'Image Segmentation Using MST',
+    description: "An implementation of Kruskal's algorithm for image analysis.",
+    details: [
+        'Implemented Kruskal’s MST algorithm to segment images and cluster backgrounds.',
+        'Analyzed computational complexity and performance across image sets.'
+    ]
   },
 ];
 
 export const certifications = [
     {
       id: 1,
-      name: 'Professional Data Engineer',
-      issuer: 'Google Cloud Certified',
+      name: 'Operationalizing Generative AI Applications (FMOps/LLMOps)',
+      issuer: 'AWS',
     },
     {
       id: 2,
-      name: 'TensorFlow Developer Certificate',
-      issuer: 'TensorFlow',
+      name: 'Fundamentals of Machine Learning and AI',
+      issuer: 'AWS',
     },
     {
       id: 3,
-      name: 'Machine Learning Specialist',
-      issuer: 'AWS Certified',
+      name: 'Getting Started with Prompt Engineering',
+      issuer: 'Skillsoft',
+    },
+    {
+      id: 4,
+      name: 'Core Infrastructure Fundamentals',
+      issuer: 'Google Cloud',
+    },
+    {
+      id: 5,
+      name: 'Transformer-based NLP & Deep Learning',
+      issuer: 'NVIDIA',
+    },
+    {
+      id: 6,
+      name: 'Cloud Architecting & Foundations',
+      issuer: 'AWS Academy',
+    },
+    {
+      id: 7,
+      name: 'Python for Data Science',
+      issuer: 'NPTEL',
     },
 ];
+
+export const focusAreas = [
+    'Agentic AI and Generative AI Applications',
+    'Data Engineering using AWS (Glue, Lambda, Timestream, etc.)',
+    'End-to-End ML/AI system deployment',
+    'DevOps and Cloud Architecture',
+]

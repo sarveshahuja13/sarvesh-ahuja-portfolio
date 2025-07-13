@@ -25,7 +25,7 @@ export function HeroSection() {
                   Sarvesh Ahuja
                 </h1>
                 <h2 className="text-xl font-medium text-muted-foreground mt-1">
-                  AI & Data Engineer
+                  Software Developer
                 </h2>
                 <div className="mt-6 flex justify-center lg:justify-start space-x-2">
                   <Button variant="outline" size="icon" asChild>
@@ -45,10 +45,16 @@ export function HeroSection() {
                   </Button>
                 </div>
               </div>
-              <div className="lg:col-span-2 flex flex-col justify-center">
-                <h3 className="font-headline text-2xl font-semibold mb-4">About Me</h3>
-                <p className="text-muted-foreground md:text-lg/relaxed lg:text-xl/relaxed">
-                  I am a passionate and results-driven AI and Data Engineer with a proven track record of designing, developing, and deploying robust machine learning models and data pipelines. My expertise lies in leveraging cutting-edge technologies to extract valuable insights from complex datasets and build intelligent systems that solve real-world problems. I am dedicated to clean code, scalable architecture, and continuous learning to stay at the forefront of the rapidly evolving AI landscape.
+              <div className="lg:col-span-2 flex flex-col justify-center space-y-4">
+                <h3 className="font-headline text-2xl font-semibold">About Me</h3>
+                <p className="text-muted-foreground md:text-lg/relaxed">
+                  Hi, I’m Sarvesh Ahuja — a software developer passionate about solving complex problems through code and design. With a strong foundation in AI, data engineering, and backend systems, I work at the intersection of innovation and execution.
+                </p>
+                <p className="text-muted-foreground md:text-lg/relaxed">
+                  Currently, I’m working at Sun Life (SLGS), Bangalore, contributing to the design and deployment of scalable data platforms and backend pipelines using AWS services. I’m particularly interested in the evolving space of Agentic AI, and I’m actively exploring how Generative AI tools and frameworks can be applied in real-world production systems.
+                </p>
+                <p className="text-muted-foreground md:text-lg/relaxed">
+                  I thrive on learning, building, and optimizing — whether it’s through developing robust data pipelines, deploying intelligent chatbots, or architecting cost-efficient cloud solutions. My approach combines practical engineering with a curiosity for the future of AI and cloud infrastructure.
                 </p>
               </div>
             </div>

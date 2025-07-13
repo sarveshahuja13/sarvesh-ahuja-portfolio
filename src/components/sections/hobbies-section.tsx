@@ -1,12 +1,11 @@
 import React from 'react';
-import { BookOpen, Camera, Plane, Dumbbell } from 'lucide-react';
+import { Music, Mountain, Dumbbell } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const hobbies = [
-  { id: 1, name: 'Reading Sci-Fi', icon: <BookOpen className="h-8 w-8 text-primary" /> },
-  { id: 2, name: 'Photography', icon: <Camera className="h-8 w-8 text-primary" /> },
-  { id: 3, name: 'Traveling', icon: <Plane className="h-8 w-8 text-primary" /> },
-  { id: 4, name: 'Fitness', icon: <Dumbbell className="h-8 w-8 text-primary" /> },
+  { id: 1, name: 'Indian Classical Flute', description: '8+ years of learning', icon: <Music className="h-8 w-8 text-primary" /> },
+  { id: 2, name: 'Rock Climbing', description: 'And outdoor exploration', icon: <Mountain className="h-8 w-8 text-primary" /> },
+  { id: 3, name: 'Calisthenics', description: 'Mastering the front lever', icon: <Dumbbell className="h-8 w-8 text-primary" /> },
 ];
 
 export function HobbiesSection() {
@@ -15,13 +14,13 @@ export function HobbiesSection() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-12 text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-            Beyond the Keyboard
+            Hobbies & Interests
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed mt-2">
             A few things I enjoy doing in my free time.
           </p>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {hobbies.map(hobby => (
             <Card key={hobby.id} className="text-center shadow-md hover:shadow-xl transition-shadow duration-300">
               <CardHeader>
@@ -30,6 +29,9 @@ export function HobbiesSection() {
                 </div>
                 <CardTitle className="font-headline text-lg">{hobby.name}</CardTitle>
               </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{hobby.description}</p>
+              </CardContent>
             </Card>
           ))}
         </div>
