@@ -1,0 +1,71 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Code2 } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+
+const navLinks = [
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#certifications', label: 'Certifications' },
+  { href: '#contact', label: 'Contact' },
+];
+
+export function Header() {
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 10);
+      
+      const sections = navLinks.map(link => document.querySelector(link.href));
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i] as HTMLElement;
+        if (section && scrollPosition >= section.offsetTop) {
+          setActiveSection(navLinks[i].href);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); 
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={cn(
+        'sticky top-0 z-50 w-full transition-all duration-300',
+        hasScrolled ? 'border-b bg-background/80 backdrop-blur-sm' : 'bg-background'
+      )}
+    >
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+        <Link href="#" className="flex items-center gap-2">
+          <Code2 className="h-6 w-6 text-primary" />
+          <span className="font-headline text-lg font-bold">Sarvesh Ahuja</span>
+        </Link>
+        <nav className="hidden items-center gap-2 md:flex">
+          {navLinks.map(({ href, label }) => (
+            <Button asChild variant="link" key={href} className={cn(
+              "text-muted-foreground transition-colors hover:text-primary hover:no-underline",
+              activeSection === href && 'text-primary font-semibold'
+            )}>
+              <a href={href}>{label}</a>
+            </Button>
+          ))}
+        </nav>
+        <div className="md:hidden">
+            {/* Mobile menu can be added here if needed */}
+        </div>
+      </div>
+    </header>
+  );
+}
