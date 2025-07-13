@@ -1,5 +1,5 @@
 import Groq from 'groq-sdk';
-import { GroqStream, StreamingTextResponse } from 'ai';
+import { Stream, OpenAIStream, StreamingTextResponse } from 'ai';
 
 export const runtime = 'edge';
 
@@ -156,7 +156,7 @@ export async function POST(req: Request) {
     ],
   });
 
-  const stream = GroqStream(response);
+  const stream = OpenAIStream(response);
 
   return new StreamingTextResponse(stream);
 }
