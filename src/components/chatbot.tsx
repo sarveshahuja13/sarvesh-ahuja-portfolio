@@ -36,15 +36,20 @@ export function Chatbot() {
 
   return (
     <>
-      <Button
-        className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg animate-bounce-subtle"
-        size="icon"
-        onClick={() => setIsOpen(true)}
-        style={{ backgroundColor: 'var(--accent)', color: 'var(--accent-foreground)' }}
-      >
-        <Bot className="h-8 w-8" />
-        <span className="sr-only">Open Chatbot</span>
-      </Button>
+      <div className="chatbot-container">
+        <div className="relative chatbot-glow">
+          <Button
+            className="h-16 w-16 rounded-full shadow-lg animate-bounce-subtle"
+            size="icon"
+            onClick={() => setIsOpen(true)}
+            style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}
+          >
+            <Bot className="h-8 w-8" />
+            <span className="sr-only">Open Chatbot</span>
+          </Button>
+        </div>
+      </div>
+
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="flex h-[80vh] max-h-[80vh] w-[90vw] max-w-2xl flex-col p-0">
@@ -69,7 +74,7 @@ export function Chatbot() {
                     )}
                     <div
                       className={cn(
-                        'max-w-[80%] rounded-lg p-3 text-sm prose dark:prose-invert',
+                        'max-w-[80%] rounded-lg p-3 text-sm prose dark:prose-invert prose-p:my-2 prose-headings:my-3',
                         m.role === 'user'
                           ? 'bg-primary text-primary-foreground'
                           : 'bg-muted'
