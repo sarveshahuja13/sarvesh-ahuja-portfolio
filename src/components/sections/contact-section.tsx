@@ -17,6 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import { submitContactForm } from '@/app/actions';
 import { Send } from 'lucide-react';
 
 const formSchema = z.object({
@@ -36,26 +37,16 @@ export function ContactSection() {
     },
   });
 
-  const encode = (data: Record<string, any>) => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
-  }
-
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", ...values })
-      });
-      
+    const result = await submitContactForm(values);
+
+    if (result.success) {
       toast({
         title: 'Message Sent!',
         description: 'Thank you for reaching out. I will get back to you soon.',
       });
       form.reset();
-    } catch (error) {
+    } else {
       toast({
         variant: 'destructive',
         title: 'Uh oh! Something went wrong.',
@@ -78,20 +69,7 @@ export function ContactSection() {
           </CardHeader>
           <CardContent>
             <Form {...form}>
-              <form 
-                name="contact"
-                onSubmit={form.handleSubmit(onSubmit)} 
-                className="space-y-6"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                <p className="hidden">
-                  <label>
-                    Don’t fill this out if you’re human: <input name="bot-field" />
-                  </label>
-                </p>
-
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
                   control={form.control}
                   name="name"
