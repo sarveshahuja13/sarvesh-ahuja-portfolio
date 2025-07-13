@@ -13,27 +13,27 @@ const education = {
 
 export function EducationSection() {
   return (
-    <section id="education" className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
+    <section id="education" className="w-full py-16 md:py-24 lg:py-32">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-12 text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
+          <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl text-primary">
             Education
           </h2>
         </div>
-        <Card className="max-w-3xl mx-auto shadow-lg">
+        <Card className="max-w-3xl mx-auto shadow-sm border-border/50">
             <CardHeader className='text-center'>
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
-                  <GraduationCap className="h-8 w-8 text-primary" />
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 mb-4">
+                  <GraduationCap className="h-8 w-8 text-accent" />
                 </div>
-                <CardTitle className="font-headline">{education.degree}</CardTitle>
-                <CardDescription className='text-lg text-muted-foreground'>{education.institution}</CardDescription>
+                <CardTitle className="font-headline text-2xl">{education.degree}</CardTitle>
+                <CardDescription className='text-lg text-muted-foreground mt-1'>{education.institution}</CardDescription>
                 <p className="text-sm text-muted-foreground">{education.duration} | CGPA: {education.cgpa}</p>
             </CardHeader>
-            <CardContent className="text-center">
-                <p className='font-semibold mb-2'>Key Skills:</p>
+            <CardContent className="text-center pt-4">
+                <p className='font-semibold mb-3 text-sm'>Key Coursework:</p>
                 <div className="flex flex-wrap justify-center gap-2">
                     {education.skills.map(skill => (
-                        <Badge key={skill} variant="secondary">{skill}</Badge>
+                        <Badge key={skill} variant="secondary" className="font-normal">{skill}</Badge>
                     ))}
                 </div>
             </CardContent>

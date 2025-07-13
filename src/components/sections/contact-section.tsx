@@ -56,15 +56,15 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
+    <section id="contact" className="w-full py-16 md:py-24 lg:py-32 section-gradient">
       <div className="container mx-auto px-4 md:px-6">
-        <Card className="max-w-2xl mx-auto shadow-lg">
+        <Card className="max-w-2xl mx-auto border-border/50 shadow-sm">
           <CardHeader className="text-center">
-            <CardTitle className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
+            <CardTitle className="font-headline text-3xl font-bold tracking-tight sm:text-4xl text-primary">
               Get in Touch
             </CardTitle>
-            <CardDescription className="text-muted-foreground md:text-xl/relaxed mt-2">
-              Have a question or want to work together?
+            <CardDescription className="text-muted-foreground md:text-xl/relaxed mt-3">
+              Have a question, a project idea, or just want to connect?
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -112,8 +112,7 @@ export function ContactSection() {
                 <Button 
                   type="submit" 
                   disabled={form.formState.isSubmitting} 
-                  className="w-full"
-                  style={{ backgroundColor: 'var(--accent)', color: 'var(--accent-foreground)' }}
+                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
                 >
                   {form.formState.isSubmitting ? 'Sending...' : <>Send Message <Send className="ml-2 h-4 w-4" /></>}
                 </Button>

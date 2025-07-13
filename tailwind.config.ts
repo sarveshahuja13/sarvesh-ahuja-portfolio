@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['Open Sans', 'sans-serif'],
-        headline: ['Roboto', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        headline: ['Roboto Flex', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -103,20 +103,20 @@ export default {
       typography: ({ theme }: { theme: any }) => ({
         DEFAULT: {
           css: {
-            '--tw-prose-body': theme('colors.foreground'),
+            '--tw-prose-body': theme('colors.muted.foreground'),
             '--tw-prose-headings': theme('colors.primary'),
             '--tw-prose-lead': theme('colors.muted.foreground'),
-            '--tw-prose-links': theme('colors.primary'),
+            '--tw-prose-links': theme('colors.accent'),
             '--tw-prose-bold': theme('colors.foreground'),
             '--tw-prose-counters': theme('colors.muted.foreground'),
-            '--tw-prose-bullets': theme('colors.primary'),
+            '--tw-prose-bullets': theme('colors.accent'),
             '--tw-prose-hr': theme('colors.border'),
             '--tw-prose-quotes': theme('colors.foreground'),
-            '--tw-prose-quote-borders': theme('colors.primary'),
+            '--tw-prose-quote-borders': theme('colors.accent'),
             '--tw-prose-captions': theme('colors.muted.foreground'),
             '--tw-prose-code': theme('colors.foreground'),
             '--tw-prose-pre-code': theme('colors.foreground'),
-            '--tw-prose-pre-bg': theme('colors.muted'),
+            '--tw-prose-pre-bg': theme('colors.secondary'),
             '--tw-prose-th-borders': theme('colors.border'),
             '--tw-prose-td-borders': theme('colors.border'),
             '--tw-prose-invert-body': theme('colors.foreground'),
