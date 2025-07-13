@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Code2 } from 'lucide-react';
+import { Code2, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -46,26 +47,53 @@ export function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        hasScrolled ? 'border-b bg-background/80 backdrop-blur-sm' : 'bg-background'
+        hasScrolled ? 'border-b border-border/50 bg-background/80 backdrop-blur-sm' : 'bg-background'
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="#" className="flex items-center gap-2">
-          <Code2 className="h-6 w-6 text-primary" />
+        <a href="#about" className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+          <Code2 className="h-6 w-6" />
           <span className="font-headline text-lg font-bold">Sarvesh Ahuja</span>
-        </Link>
-        <nav className="hidden items-center gap-2 md:flex">
+        </a>
+        <nav className="hidden items-center gap-1 md:flex">
           {navLinks.map(({ href, label }) => (
-            <Button asChild variant="link" key={href} className={cn(
-              "text-muted-foreground transition-colors hover:text-primary hover:no-underline",
-              activeSection === href && 'text-primary font-semibold'
+            <Button asChild variant="ghost" key={href} className={cn(
+              "text-muted-foreground transition-colors hover:text-primary",
+              activeSection === href && 'text-primary font-semibold bg-secondary'
             )}>
               <a href={href}>{label}</a>
             </Button>
           ))}
         </nav>
         <div className="md:hidden">
-            {/* Mobile menu can be added here if needed */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" className="text-primary border-primary">
+                <Menu className="h-5 w-5 mr-2" />
+                Menu
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle className="text-left text-primary font-headline">Navigation</SheetTitle>
+              </SheetHeader>
+              <nav className="flex flex-col gap-4 mt-8">
+                {navLinks.map(({ href, label }) => (
+                  <SheetClose asChild key={href}>
+                    <a
+                      href={href}
+                      className={cn(
+                        "text-lg text-muted-foreground transition-colors hover:text-primary",
+                         activeSection === href && 'text-primary font-semibold'
+                      )}
+                    >
+                      {label}
+                    </a>
+                  </SheetClose>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>

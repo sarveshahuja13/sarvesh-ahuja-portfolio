@@ -5,7 +5,7 @@ import { useChat } from 'ai/react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Bot, User, CornerDownLeft, Mic } from 'lucide-react';
+import { Bot, User, CornerDownLeft, X } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -13,15 +13,45 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import ReactMarkdown from 'react-markdown';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(false);
+
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-      api: '/api/chat',
+    api: '/api/chat',
+    onFinish: () => {
+      // Optional: any action after a message is received
+    },
   });
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    // Show greeting after 3 seconds, but only if the chat isn't already open
+    const timer = setTimeout(() => {
+      if (!isOpen) {
+        setShowGreeting(true);
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [isOpen]);
+  
+  useEffect(() => {
+    // Hide greeting if chat is opened
+    if (isOpen) {
+      setShowGreeting(false);
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -32,22 +62,53 @@ export function Chatbot() {
     }
   }, [messages]);
 
+  const handleOpenChat = () => {
+    setIsOpen(true);
+    setShowGreeting(false);
+  }
 
   return (
     <>
-      <Button
-        className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg"
-        size="icon"
-        onClick={() => setIsOpen(true)}
-        style={{ backgroundColor: 'var(--accent)', color: 'var(--accent-foreground)' }}
-      >
-        <Bot className="h-8 w-8" />
-        <span className="sr-only">Open Chatbot</span>
-      </Button>
+      <div className="chatbot-container">
+        {showGreeting && (
+           <div className="absolute bottom-20 right-0 mb-2">
+              <div className="bg-background border border-border/50 shadow-lg rounded-lg p-3 max-w-[220px] text-sm text-foreground animate-in fade-in-50 slide-in-from-bottom-2">
+                <p>Hi there! Have questions about my projects or skills? Ask my AI assistant!</p>
+                <button 
+                  onClick={() => setShowGreeting(false)}
+                  className="absolute -top-2 -right-2 h-5 w-5 bg-muted rounded-full flex items-center justify-center text-muted-foreground hover:bg-secondary hover:text-foreground transition-all"
+                  aria-label="Dismiss"
+                >
+                  <X size={12} />
+                </button>
+              </div>
+              <div className="absolute bottom-[-8px] right-5 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-background" />
+           </div>
+        )}
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="chatbot-border-glow animate-bounce">
+                <Button
+                  className="h-16 w-16 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground"
+                  size="icon"
+                  onClick={handleOpenChat}
+                  aria-label="Open chat"
+                >
+                  <Bot className="h-8 w-8 text-primary" />
+                </Button>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent side="left" className="mb-2">
+              <p>Chat with my AI assistant</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="flex h-[80vh] max-h-[80vh] w-[90vw] max-w-2xl flex-col p-0">
-          <DialogHeader className="p-4 border-b">
+        <DialogContent className="sm:max-w-2xl w-full h-full sm:h-[80vh] sm:max-h-[80vh] flex flex-col p-0 sm:rounded-lg">
+          <DialogHeader className="p-4 border-b shrink-0">
             <DialogTitle className="font-headline text-primary">Chat with my AI Assistant</DialogTitle>
           </DialogHeader>
           <div className="flex-1 overflow-hidden">
@@ -62,22 +123,26 @@ export function Chatbot() {
                     )}
                   >
                     {m.role === 'assistant' && (
-                      <Avatar className="h-8 w-8 border">
+                      <Avatar className="h-8 w-8 border shrink-0">
                         <AvatarFallback><Bot size={18} /></AvatarFallback>
                       </Avatar>
                     )}
                     <div
                       className={cn(
-                        'max-w-[80%] rounded-lg p-3 text-sm',
+                        'max-w-[85%] rounded-lg p-3 text-sm prose dark:prose-invert prose-p:my-2 prose-headings:my-3',
                         m.role === 'user'
                           ? 'bg-primary text-primary-foreground'
                           : 'bg-muted'
                       )}
                     >
-                      {m.content}
+                      {m.role === 'assistant' ? (
+                        <ReactMarkdown>{m.content}</ReactMarkdown>
+                      ) : (
+                        m.content
+                      )}
                     </div>
                      {m.role === 'user' && (
-                      <Avatar className="h-8 w-8 border">
+                      <Avatar className="h-8 w-8 border shrink-0">
                         <AvatarFallback><User size={18} /></AvatarFallback>
                       </Avatar>
                     )}
@@ -85,7 +150,7 @@ export function Chatbot() {
                 ))}
                  {isLoading && (
                     <div className="flex items-start gap-3 justify-start">
-                        <Avatar className="h-8 w-8 border">
+                        <Avatar className="h-8 w-8 border shrink-0">
                             <AvatarFallback><Bot size={18} /></AvatarFallback>
                         </Avatar>
                         <div className="bg-muted rounded-lg p-3 text-sm">
@@ -100,12 +165,13 @@ export function Chatbot() {
               </div>
             </ScrollArea>
           </div>
-          <div className="border-t p-4">
+          <div className="border-t p-4 shrink-0">
             <form onSubmit={handleSubmit} className="relative">
               <Input
+                ref={inputRef}
                 value={input}
                 onChange={handleInputChange}
-                placeholder="Ask about my projects, skills, or experience..."
+                placeholder="Ask about my skills, projects..."
                 className="pr-12"
               />
               <Button

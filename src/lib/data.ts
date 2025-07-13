@@ -1,3 +1,4 @@
+
 export const experiences = [
   {
     id: 1,
@@ -7,7 +8,7 @@ export const experiences = [
     projects: [
       {
         name: 'Project: CCAS Pega',
-        details: [
+        description: [
           'Led deployment of a customer data platform to production.',
           'Collaborated with platform teams to enhance data hydration, boosting system resilience by ~85%.',
           'Built backend components: 7 Glue Jobs, 5 Lambdas, CI/CD with Jenkins and Terraform.',
@@ -15,24 +16,29 @@ export const experiences = [
       },
       {
         name: 'Project: HDP',
-        details: [
-          'Took over project during team transition and led it to production (May 2025).',
-          'Designed and implemented new CI/CD pipelines and serverless data processing jobs.',
-          'Re-architected pipeline to cut costs by 60% while improving system reliability.',
-        ]
-      }
-    ]
+        description: [
+          'Took over a different project during team transition and led it to production.',
+          'Designed and implemented new CI/CD pipelines and serverless data processing jobs for HDP.',
+          'Re-architected the HDP pipeline to cut costs by 60% while improving system reliability.',
+        ],
+      },
+    ],
   },
   {
     id: 2,
     role: 'Machine Learning Intern',
     company: 'Locuz Enterprise Solutions Ltd',
     date: 'Jun 2023 - Sep 2023',
-    description: [
-        'Built a conversational AI dashboard assistant for green energy clients using GPT-4 and Gradio.',
-        'Integrated InfluxDB for time-series energy data and created real-time dashboards in Grafana.',
-        'Generated Flux queries and enabled voice emotion detection using a custom ML model.',
-    ],
+    projects: [
+       {
+        name: 'Key Responsibilities',
+        description: [
+            'Built a conversational AI dashboard assistant for green energy clients using GPT-4 and Gradio.',
+            'Integrated InfluxDB for time-series energy data and created real-time dashboards in Grafana.',
+            'Generated Flux queries and enabled voice emotion detection using a custom ML model.',
+        ],
+      }
+    ]
   },
 ];
 
@@ -64,6 +70,15 @@ export const projects = [
         'Analyzed computational complexity and performance across image sets.'
     ]
   },
+  {
+    id: 4,
+    title: 'Optimized Diaspora Evacuation System (ODES)',
+    description: 'A full-stack platform to automate logistical planning for emergency evacuations.',
+    details: [
+        'Replaced slow, manual evacuation processes by analyzing population data and assigning optimal flight routes.',
+        'Tech Stack: React, Python (Flask, Pandas, scikit-learn), Folium, and Docker.'
+    ]
+  }
 ];
 
 export const certifications = [
@@ -74,7 +89,7 @@ export const certifications = [
     },
     {
       id: 2,
-      name: 'Fundamentals of Machine Learning and AI',
+      name: 'Fundamentals of Machine Learning and Artificial Intelligence',
       issuer: 'AWS',
     },
     {
