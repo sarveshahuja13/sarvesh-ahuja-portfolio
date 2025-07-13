@@ -70,6 +70,15 @@ export const projects = [
         'Analyzed computational complexity and performance across image sets.'
     ]
   },
+  {
+    id: 4,
+    title: 'Optimized Diaspora Evacuation System (ODES)',
+    description: 'A full-stack platform to automate logistical planning for emergency evacuations.',
+    details: [
+        'Replaced slow, manual evacuation processes by analyzing population data and assigning optimal flight routes.',
+        'Tech Stack: React, Python (Flask, Pandas, scikit-learn), Folium, and Docker.'
+    ]
+  }
 ];
 
 export const certifications = [
