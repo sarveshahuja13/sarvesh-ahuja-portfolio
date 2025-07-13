@@ -39,15 +39,16 @@ export function ExperienceSection() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    {exp.description && (
-                        <div className="mt-2 border-t pt-4">
-                            <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1 text-sm">
-                                {exp.description.map((item, itemIndex) => (
-                                <li key={itemIndex}>{item}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
+                    {exp.projects?.map((project, projIndex) => (
+                      <div key={projIndex} className={projIndex > 0 ? 'mt-4 border-t pt-4' : ''}>
+                        <h4 className="font-semibold text-primary">{project.name}</h4>
+                        <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1 text-sm">
+                          {project.description.map((item, itemIndex) => (
+                            <li key={itemIndex}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
                   </CardContent>
                 </Card>
               </div>

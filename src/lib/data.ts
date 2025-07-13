@@ -1,16 +1,27 @@
+
 export const experiences = [
   {
     id: 1,
     role: 'Software Developer',
     company: 'Sun Life Global Solutions, Bangalore',
     date: 'Aug 2024 - Present',
-    description: [
-      'Led deployment of a customer data platform (Project: CCAS Pega) to production.',
-      'Collaborated with platform teams to enhance data hydration, boosting system resilience by ~85%.',
-      'Built backend components: 7 Glue Jobs, 5 Lambdas, CI/CD with Jenkins and Terraform.',
-      'Took over a different project (Project: HDP) during team transition and led it to production.',
-      'Designed and implemented new CI/CD pipelines and serverless data processing jobs for HDP.',
-      'Re-architected the HDP pipeline to cut costs by 60% while improving system reliability.',
+    projects: [
+      {
+        name: 'Project: CCAS Pega',
+        description: [
+          'Led deployment of a customer data platform to production.',
+          'Collaborated with platform teams to enhance data hydration, boosting system resilience by ~85%.',
+          'Built backend components: 7 Glue Jobs, 5 Lambdas, CI/CD with Jenkins and Terraform.',
+        ],
+      },
+      {
+        name: 'Project: HDP',
+        description: [
+          'Took over a different project during team transition and led it to production.',
+          'Designed and implemented new CI/CD pipelines and serverless data processing jobs for HDP.',
+          'Re-architected the HDP pipeline to cut costs by 60% while improving system reliability.',
+        ],
+      },
     ],
   },
   {
@@ -18,11 +29,16 @@ export const experiences = [
     role: 'Machine Learning Intern',
     company: 'Locuz Enterprise Solutions Ltd',
     date: 'Jun 2023 - Sep 2023',
-    description: [
-        'Built a conversational AI dashboard assistant for green energy clients using GPT-4 and Gradio.',
-        'Integrated InfluxDB for time-series energy data and created real-time dashboards in Grafana.',
-        'Generated Flux queries and enabled voice emotion detection using a custom ML model.',
-    ],
+    projects: [
+       {
+        name: 'Key Responsibilities',
+        description: [
+            'Built a conversational AI dashboard assistant for green energy clients using GPT-4 and Gradio.',
+            'Integrated InfluxDB for time-series energy data and created real-time dashboards in Grafana.',
+            'Generated Flux queries and enabled voice emotion detection using a custom ML model.',
+        ],
+      }
+    ]
   },
 ];
 
@@ -64,7 +80,7 @@ export const certifications = [
     },
     {
       id: 2,
-      name: 'Fundamentals of Machine Learning and AI',
+      name: 'Fundamentals of Machine Learning and Artificial Intelligence',
       issuer: 'AWS',
     },
     {
