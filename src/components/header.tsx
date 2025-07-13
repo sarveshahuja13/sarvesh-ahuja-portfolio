@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Code2 } from 'lucide-react';
+import { Code2, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -65,7 +66,31 @@ export function Header() {
           ))}
         </nav>
         <div className="md:hidden">
-            {/* Mobile menu can be added here if needed */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Open navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <nav className="flex flex-col gap-4 mt-8">
+                {navLinks.map(({ href, label }) => (
+                  <SheetClose asChild key={href}>
+                    <a
+                      href={href}
+                      className={cn(
+                        "text-lg text-muted-foreground transition-colors hover:text-primary",
+                         activeSection === href && 'text-primary font-semibold'
+                      )}
+                    >
+                      {label}
+                    </a>
+                  </SheetClose>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
