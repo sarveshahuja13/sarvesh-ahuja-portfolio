@@ -34,6 +34,7 @@ export function Chatbot() {
   });
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     // Show greeting after 3 seconds, but only if the chat isn't already open
@@ -89,9 +90,10 @@ export function Chatbot() {
             <TooltipTrigger asChild>
               <div className="chatbot-border-glow">
                 <Button
-                  className="h-16 w-16 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground"
+                  className="h-16 w-16 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground animate-bounce"
                   size="icon"
                   onClick={handleOpenChat}
+                  aria-label="Open chat"
                 >
                   <Bot className="h-8 w-8 text-primary" />
                 </Button>
@@ -105,8 +107,8 @@ export function Chatbot() {
       </div>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="flex h-[80vh] max-h-[80vh] w-[90vw] max-w-2xl flex-col p-0">
-          <DialogHeader className="p-4 border-b">
+        <DialogContent className="sm:max-w-2xl w-full h-full sm:h-[80vh] sm:max-h-[80vh] flex flex-col p-0 sm:rounded-lg">
+          <DialogHeader className="p-4 border-b shrink-0">
             <DialogTitle className="font-headline text-primary">Chat with my AI Assistant</DialogTitle>
           </DialogHeader>
           <div className="flex-1 overflow-hidden">
@@ -121,13 +123,13 @@ export function Chatbot() {
                     )}
                   >
                     {m.role === 'assistant' && (
-                      <Avatar className="h-8 w-8 border">
+                      <Avatar className="h-8 w-8 border shrink-0">
                         <AvatarFallback><Bot size={18} /></AvatarFallback>
                       </Avatar>
                     )}
                     <div
                       className={cn(
-                        'max-w-[80%] rounded-lg p-3 text-sm prose dark:prose-invert prose-p:my-2 prose-headings:my-3',
+                        'max-w-[85%] rounded-lg p-3 text-sm prose dark:prose-invert prose-p:my-2 prose-headings:my-3',
                         m.role === 'user'
                           ? 'bg-primary text-primary-foreground'
                           : 'bg-muted'
@@ -140,7 +142,7 @@ export function Chatbot() {
                       )}
                     </div>
                      {m.role === 'user' && (
-                      <Avatar className="h-8 w-8 border">
+                      <Avatar className="h-8 w-8 border shrink-0">
                         <AvatarFallback><User size={18} /></AvatarFallback>
                       </Avatar>
                     )}
@@ -148,7 +150,7 @@ export function Chatbot() {
                 ))}
                  {isLoading && (
                     <div className="flex items-start gap-3 justify-start">
-                        <Avatar className="h-8 w-8 border">
+                        <Avatar className="h-8 w-8 border shrink-0">
                             <AvatarFallback><Bot size={18} /></AvatarFallback>
                         </Avatar>
                         <div className="bg-muted rounded-lg p-3 text-sm">
@@ -163,12 +165,13 @@ export function Chatbot() {
               </div>
             </ScrollArea>
           </div>
-          <div className="border-t p-4">
+          <div className="border-t p-4 shrink-0">
             <form onSubmit={handleSubmit} className="relative">
               <Input
+                ref={inputRef}
                 value={input}
                 onChange={handleInputChange}
-                placeholder="Ask about my projects, skills, or experience..."
+                placeholder="Ask about my skills, projects..."
                 className="pr-12"
               />
               <Button
