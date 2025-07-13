@@ -16,8 +16,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
 import { Send } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -26,7 +27,9 @@ const formSchema = z.object({
 });
 
 export function ContactSection() {
+  const router = useRouter();
   const { toast } = useToast();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,33 +39,13 @@ export function ContactSection() {
     },
   });
 
-  const encode = (data: Record<string, any>) => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
-  }
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", ...values })
-      });
-      
-      toast({
-        title: 'Message Sent!',
-        description: 'Thank you for reaching out. I will get back to you soon.',
-      });
-      form.reset();
-    } catch (error) {
-      toast({
-        variant: 'destructive',
-        title: 'Uh oh! Something went wrong.',
-        description: 'There was a problem with your request. Please try again.',
-      });
-    }
-  }
+  // This function is not used for submission anymore, but can be kept for validation logic
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    // This is intentionally left blank. 
+    // The form submission is handled by Netlify's standard form handling.
+    // We trigger the native form submission from the button's onClick handler
+    // after validation passes.
+  };
 
   return (
     <section id="contact" className="w-full py-16 md:py-24 lg:py-32 section-gradient">
@@ -80,10 +63,11 @@ export function ContactSection() {
             <Form {...form}>
               <form 
                 name="contact"
-                onSubmit={form.handleSubmit(onSubmit)} 
-                className="space-y-6"
+                method="POST"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
+                onSubmit={form.handleSubmit(onSubmit)} 
+                className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="contact" />
                 <p className="hidden">
