@@ -37,14 +37,13 @@ export function Chatbot() {
   return (
     <>
       <div className="chatbot-container">
-        <div className="relative chatbot-glow">
+        <div className="chatbot-border-glow">
           <Button
-            className="h-16 w-16 rounded-full shadow-lg animate-bounce-subtle"
+            className="h-16 w-16 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground"
             size="icon"
             onClick={() => setIsOpen(true)}
-            style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}
           >
-            <Bot className="h-8 w-8" />
+            <Bot className="h-8 w-8 text-primary" />
             <span className="sr-only">Open Chatbot</span>
           </Button>
         </div>

@@ -82,25 +82,32 @@ body {
   z-index: 50;
 }
 
-.chatbot-glow::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  transform: scale(1.4);
-  background-image: linear-gradient(160deg, #ff7f50, #468499, #8a2be2, #ff7f50);
-  background-size: 300%;
-  z-index: -1;
-  filter: blur(25px);
-  animation: chatbot-glow-animation 8s linear infinite;
-  border-radius: 9999px;
-  opacity: 0.7;
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
-@keyframes chatbot-glow-animation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes chatbot-border-spin {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+.chatbot-border-glow {
+  position: relative;
+  border-radius: 9999px;
+  padding: 3px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #ff7f50, 
+    #8a2be2, 
+    #468499,
+    #8a2be2,
+    #ff7f50
+  );
+  animation: chatbot-border-spin 4s linear infinite;
 }
