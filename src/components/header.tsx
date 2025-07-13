@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Code2, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -68,12 +68,15 @@ export function Header() {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" className="text-primary">
+              <Button variant="outline" className="text-primary border-primary">
                 <Menu className="h-5 w-5 mr-2" />
                 Menu
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle className="text-left text-primary font-headline">Navigation</SheetTitle>
+              </SheetHeader>
               <nav className="flex flex-col gap-4 mt-8">
                 {navLinks.map(({ href, label }) => (
                   <SheetClose asChild key={href}>
