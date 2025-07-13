@@ -1,7 +1,8 @@
 import React from 'react';
 import { Briefcase } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { experiences } from '@/lib/data';
+import { cn } from '@/lib/utils';
 
 export function ExperienceSection() {
   return (
@@ -16,46 +17,62 @@ export function ExperienceSection() {
           </p>
         </div>
         <div className="relative">
-          <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-border"></div>
+          {/* Vertical line for desktop */}
+          <div className="absolute left-0 top-0 h-full w-0.5 bg-border md:left-1/2 md:-translate-x-1/2"></div>
+          
           {experiences.map((exp, index) => (
-            <div key={exp.id} className="relative mb-8 grid md:grid-cols-[1fr_auto_1fr] md:gap-8 items-start">
+            <div 
+              key={exp.id} 
+              className={cn(
+                "relative flex items-start mb-12",
+                "md:grid md:grid-cols-2 md:gap-x-12",
+                index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
+              )}
+            >
+              {/* Content Block */}
               <div className={cn(
-                'md:text-right',
-                index % 2 === 0 ? 'md:order-1' : 'md:order-3'
+                "w-full md:w-auto pl-8 md:pl-0",
+                index % 2 === 0 ? "md:text-left" : "md:text-right"
               )}>
-                 <p className="font-headline text-lg font-semibold">{exp.role}</p>
-                 <p className="text-muted-foreground">{exp.company}</p>
-                 <p className="text-sm text-muted-foreground font-medium mt-1">{exp.date}</p>
-              </div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block md:order-2">
-                  <div className="h-4 w-4 rounded-full bg-primary border-4 border-background"></div>
-              </div>
-              <div className={cn(
-                'relative mt-4 md:mt-0',
-                index % 2 === 0 ? 'md:order-3' : 'md:order-1'
-              )}>
-                
                 <Card className="shadow-md hover:shadow-xl transition-shadow duration-300">
                   <CardContent className="pt-6">
                     {exp.projects?.map((project, projIndex) => (
-                        <div key={projIndex} className={projIndex > 0 ? 'mt-4' : ''}>
-                          <h4 className='font-headline font-semibold'>{project.name}</h4>
-                          <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1">
-                              {project.details.map((detail, detailIndex) => (
-                                  <li key={detailIndex}>{detail}</li>
-                              ))}
-                          </ul>
-                        </div>
+                      <div key={projIndex} className={projIndex > 0 ? 'mt-4' : ''}>
+                        <h4 className='font-headline font-semibold'>{project.name}</h4>
+                        <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1">
+                          {project.details.map((detail, detailIndex) => (
+                            <li key={detailIndex}>{detail}</li>
+                          ))}
+                        </ul>
+                      </div>
                     ))}
                     {exp.description && (
-                         <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1">
-                            {exp.description.map((item, itemIndex) => (
-                                <li key={itemIndex}>{item}</li>
-                            ))}
-                        </ul>
+                      <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1">
+                        {exp.description.map((item, itemIndex) => (
+                          <li key={itemIndex}>{item}</li>
+                        ))}
+                      </ul>
                     )}
                   </CardContent>
                 </Card>
+              </div>
+
+              {/* Dot and Meta Info Block */}
+              <div className={cn(
+                "absolute top-0 left-0 w-full md:relative",
+                index % 2 === 0 ? "md:order-first" : "md:order-last"
+              )}>
+                <div className="absolute left-0 top-1 -translate-x-1/2 md:left-1/2">
+                   <div className="h-3 w-3 rounded-full bg-primary border-2 border-background"></div>
+                </div>
+                <div className={cn(
+                  "pl-8 md:pl-0",
+                  index % 2 === 0 ? "md:pl-[calc(50%+1.5rem)]" : "md:pr-[calc(50%+1.5rem)] md:text-right"
+                )}>
+                  <p className="font-headline text-lg font-semibold">{exp.role}</p>
+                  <p className="text-muted-foreground">{exp.company}</p>
+                  <p className="text-sm text-muted-foreground font-medium mt-1">{exp.date}</p>
+                </div>
               </div>
             </div>
           ))}
@@ -63,8 +80,4 @@ export function ExperienceSection() {
       </div>
     </section>
   );
-}
-
-function cn(...classes: (string | undefined | null | false)[]) {
-  return classes.filter(Boolean).join(' ');
 }
