@@ -4,24 +4,14 @@ export const experiences = [
     role: 'Software Developer',
     company: 'Sun Life Global Solutions, Bangalore',
     date: 'Aug 2024 - Present',
-    projects: [
-      {
-        name: 'Project: CCAS Pega',
-        details: [
-          'Led deployment of a customer data platform to production.',
-          'Collaborated with platform teams to enhance data hydration, boosting system resilience by ~85%.',
-          'Built backend components: 7 Glue Jobs, 5 Lambdas, CI/CD with Jenkins and Terraform.',
-        ],
-      },
-      {
-        name: 'Project: HDP',
-        details: [
-          'Took over project during team transition and led it to production (May 2025).',
-          'Designed and implemented new CI/CD pipelines and serverless data processing jobs.',
-          'Re-architected pipeline to cut costs by 60% while improving system reliability.',
-        ]
-      }
-    ]
+    description: [
+      'Led deployment of a customer data platform (Project: CCAS Pega) to production.',
+      'Collaborated with platform teams to enhance data hydration, boosting system resilience by ~85%.',
+      'Built backend components: 7 Glue Jobs, 5 Lambdas, CI/CD with Jenkins and Terraform.',
+      'Took over a different project (Project: HDP) during team transition and led it to production.',
+      'Designed and implemented new CI/CD pipelines and serverless data processing jobs for HDP.',
+      'Re-architected the HDP pipeline to cut costs by 60% while improving system reliability.',
+    ],
   },
   {
     id: 2,
