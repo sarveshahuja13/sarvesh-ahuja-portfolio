@@ -9,10 +9,10 @@ export function ProjectsSection() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-12 text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-            Selected Projects
+            Personal Projects
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed mt-3">
-            A selection of projects that demonstrate my skills and passion.
+            A selection of personal projects that demonstrate my skills and passion.
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
