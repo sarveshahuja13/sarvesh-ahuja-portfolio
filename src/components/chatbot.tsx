@@ -37,7 +37,7 @@ export function Chatbot() {
   return (
     <>
       <Button
-        className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg"
+        className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg animate-bounce-subtle"
         size="icon"
         onClick={() => setIsOpen(true)}
         style={{ backgroundColor: 'var(--accent)', color: 'var(--accent-foreground)' }}
