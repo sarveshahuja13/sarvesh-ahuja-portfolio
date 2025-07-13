@@ -68,9 +68,9 @@ export function Header() {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Open navigation menu</span>
+              <Button variant="ghost" className="text-primary">
+                <Menu className="h-5 w-5 mr-2" />
+                Menu
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
