@@ -17,7 +17,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Send } from 'lucide-react';
-import { useToast } from '@/components/ui/use-toast';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -28,8 +27,6 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export function ContactSection() {
-  const { toast } = useToast();
-  
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,31 +35,6 @@ export function ContactSection() {
       message: '',
     },
   });
-
-  const handleFormSubmit = (data: FormData, event?: React.BaseSyntheticEvent) => {
-    event?.preventDefault();
-    const formData = new FormData(event?.target);
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData as any).toString(),
-    })
-    .then(() => {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      form.reset();
-    })
-    .catch((error) => {
-       toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: `There was a problem: ${error.message}. Please try again.`,
-      });
-    });
-  };
 
   return (
     <section id="contact" className="w-full py-16 md:py-24 lg:py-32 section-gradient">
@@ -78,13 +50,16 @@ export function ContactSection() {
           </CardHeader>
           <CardContent>
             <Form {...form}>
-              <form 
+              {/* This form is submitted via standard HTML action, not AJAX. */}
+              <form
                 name="contact"
+                method="POST"
+                action="/success"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
-                onSubmit={form.handleSubmit(handleFormSubmit)}
                 className="space-y-6"
               >
+                {/* This hidden input is required for Netlify Forms to work correctly with Next.js */}
                 <input type="hidden" name="form-name" value="contact" />
                 <div className="hidden">
                   <label>
