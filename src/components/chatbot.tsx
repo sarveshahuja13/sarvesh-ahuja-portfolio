@@ -71,7 +71,7 @@ export function Chatbot() {
     <>
       <div className="chatbot-container">
         {showGreeting && (
-           <div className="relative mb-2">
+           <div className="absolute bottom-20 right-0 mb-2">
               <div className="bg-background border border-border/50 shadow-lg rounded-lg p-3 max-w-[220px] text-sm text-foreground animate-in fade-in-50 slide-in-from-bottom-2">
                 <p>Hi there! Have questions about my projects or skills? Ask my AI assistant!</p>
                 <button 
@@ -88,9 +88,9 @@ export function Chatbot() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="chatbot-border-glow">
+              <div className="chatbot-border-glow animate-bounce">
                 <Button
-                  className="h-16 w-16 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground animate-bounce"
+                  className="h-16 w-16 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground"
                   size="icon"
                   onClick={handleOpenChat}
                   aria-label="Open chat"
