@@ -39,17 +39,14 @@ export function ContactSection() {
     },
   });
 
-  const encode = (data: Record<string, any>) => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
-  }
+  const handleFormSubmit = (data: FormData, event?: React.BaseSyntheticEvent) => {
+    event?.preventDefault();
+    const formData = new FormData(event?.target);
 
-  const handleFormSubmit = (data: FormData) => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...data })
+      body: new URLSearchParams(formData as any).toString(),
     })
     .then(() => {
       toast({
@@ -62,7 +59,7 @@ export function ContactSection() {
        toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
-        description: "There was a problem sending your message. Please try again.",
+        description: `There was a problem: ${error.message}. Please try again.`,
       });
     });
   };
