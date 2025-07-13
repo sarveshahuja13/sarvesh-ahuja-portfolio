@@ -14,7 +14,7 @@ export function HeroSection() {
             <div className="grid gap-10 lg:grid-cols-3">
               <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                 <Image
-                  src="https://storage.googleapis.com/maker-studio-5a559.appspot.com/user-hcw53so1b5a2ygyuzzi6/hcw5k328498f395f1q9w.png"
+                  src="https://placehold.co/160x160.png"
                   alt="Sarvesh Ahuja"
                   width={160}
                   height={160}
@@ -39,7 +39,7 @@ export function HeroSection() {
                     </Link>
                   </Button>
                   <Button variant="outline" size="icon" asChild>
-                    <Link href="mailto:sarvesh.ahuja@example.com" aria-label="Email">
+                    <Link href="mailto:sarvesh.ahuja13@gmail.com" aria-label="Email">
                       <Mail className="h-5 w-5" />
                     </Link>
                   </Button>
