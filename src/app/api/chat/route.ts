@@ -145,7 +145,7 @@ export async function POST(req: Request) {
   const { messages } = await req.json();
 
   const response = await groq.chat.completions.create({
-    model: 'gemma-7b-it', // Using a recommended model, change if needed
+    model: 'compound-beta-mini', 
     stream: true,
     messages: [
         {
