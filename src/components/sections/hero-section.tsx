@@ -14,7 +14,7 @@ export function HeroSection() {
             <div className="grid gap-10 lg:grid-cols-3">
               <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                 <Image
-                  src="https://placehold.co/160x160.png"
+                  src="/profile.png"
                   alt="Sarvesh Ahuja"
                   width={160}
                   height={160}
