@@ -1,8 +1,8 @@
 import React from 'react';
 import { Briefcase } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { experiences } from '@/lib/data';
-import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
 
 export function ExperienceSection() {
   return (
@@ -13,33 +13,35 @@ export function ExperienceSection() {
             Work Experience
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed mt-2">
-            My professional journey and past experiences.
+            My professional journey and key contributions.
           </p>
         </div>
-        <div className="relative">
-          {/* Vertical line for desktop */}
-          <div className="absolute left-0 top-0 h-full w-0.5 bg-border md:left-1/2 md:-translate-x-1/2"></div>
-          
+        
+        <div className="relative border-l-2 border-primary/20 ml-4 md:ml-0">
           {experiences.map((exp, index) => (
-            <div 
-              key={exp.id} 
-              className={cn(
-                "relative flex items-start mb-12",
-                "md:grid md:grid-cols-2 md:gap-x-12",
-                index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
-              )}
-            >
-              {/* Content Block */}
-              <div className={cn(
-                "w-full md:w-auto pl-8 md:pl-0",
-                index % 2 === 0 ? "md:text-left" : "md:text-right"
-              )}>
+            <div key={exp.id} className="mb-12 flex items-start">
+              <div className="absolute -left-[1.35rem] mt-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-background ring-8 ring-background">
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10">
+                    <Briefcase className="h-4 w-4 text-primary" />
+                </div>
+              </div>
+
+              <div className="pl-12 w-full">
                 <Card className="shadow-md hover:shadow-xl transition-shadow duration-300">
-                  <CardContent className="pt-6">
+                  <CardHeader>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                        <div>
+                            <CardTitle className="font-headline text-xl">{exp.role}</CardTitle>
+                            <CardDescription className="font-medium">{exp.company}</CardDescription>
+                        </div>
+                        <Badge variant="outline" className="w-fit">{exp.date}</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
                     {exp.projects?.map((project, projIndex) => (
-                      <div key={projIndex} className={projIndex > 0 ? 'mt-4' : ''}>
-                        <h4 className='font-headline font-semibold'>{project.name}</h4>
-                        <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1">
+                      <div key={projIndex} className={projIndex > 0 ? 'mt-4 border-t pt-4' : ''}>
+                        <h4 className='font-headline font-semibold text-primary'>{project.name}</h4>
+                        <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1 text-sm">
                           {project.details.map((detail, detailIndex) => (
                             <li key={detailIndex}>{detail}</li>
                           ))}
@@ -47,32 +49,17 @@ export function ExperienceSection() {
                       </div>
                     ))}
                     {exp.description && (
-                      <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1">
-                        {exp.description.map((item, itemIndex) => (
-                          <li key={itemIndex}>{item}</li>
-                        ))}
-                      </ul>
+                        <div className="mt-4 border-t pt-4">
+                            <h4 className='font-headline font-semibold text-primary'>Key Responsibilities</h4>
+                            <ul className="mt-2 list-disc list-inside text-muted-foreground space-y-1 text-sm">
+                                {exp.description.map((item, itemIndex) => (
+                                <li key={itemIndex}>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
                     )}
                   </CardContent>
                 </Card>
-              </div>
-
-              {/* Dot and Meta Info Block */}
-              <div className={cn(
-                "absolute top-0 left-0 w-full md:relative",
-                index % 2 === 0 ? "md:order-first" : "md:order-last"
-              )}>
-                <div className="absolute left-0 top-1 -translate-x-1/2 md:left-1/2">
-                   <div className="h-3 w-3 rounded-full bg-primary border-2 border-background"></div>
-                </div>
-                <div className={cn(
-                  "pl-8 md:pl-0",
-                  index % 2 === 0 ? "md:pl-[calc(50%+1.5rem)]" : "md:pr-[calc(50%+1.5rem)] md:text-right"
-                )}>
-                  <p className="font-headline text-lg font-semibold">{exp.role}</p>
-                  <p className="text-muted-foreground">{exp.company}</p>
-                  <p className="text-sm text-muted-foreground font-medium mt-1">{exp.date}</p>
-                </div>
               </div>
             </div>
           ))}
