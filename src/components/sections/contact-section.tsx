@@ -17,8 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Send } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/components/ui/use-toast';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -26,12 +25,12 @@ const formSchema = z.object({
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }).max(500),
 });
 
-export function ContactSection() {
-  const router = useRouter();
-  const { toast } = useToast();
-  const formRef = React.useRef<HTMLFormElement>(null);
+type FormData = z.infer<typeof formSchema>;
 
-  const form = useForm<z.infer<typeof formSchema>>({
+export function ContactSection() {
+  const { toast } = useToast();
+  
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
@@ -40,12 +39,32 @@ export function ContactSection() {
     },
   });
 
-  // This function is not used for submission anymore, but can be kept for validation logic
-  const handleFormSubmit = async () => {
-    const isValid = await form.trigger();
-    if (isValid && formRef.current) {
-      formRef.current.submit();
-    }
+  const encode = (data: Record<string, any>) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+  }
+
+  const handleFormSubmit = (data: FormData) => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...data })
+    })
+    .then(() => {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      form.reset();
+    })
+    .catch((error) => {
+       toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem sending your message. Please try again.",
+      });
+    });
   };
 
   return (
@@ -63,20 +82,18 @@ export function ContactSection() {
           <CardContent>
             <Form {...form}>
               <form 
-                ref={formRef}
                 name="contact"
-                method="POST"
-                action="/?success=true"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
+                onSubmit={form.handleSubmit(handleFormSubmit)}
                 className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="contact" />
-                <p className="hidden">
+                <div className="hidden">
                   <label>
                     Don’t fill this out if you’re human: <input name="bot-field" />
                   </label>
-                </p>
+                </div>
 
                 <FormField
                   control={form.control}
@@ -118,8 +135,7 @@ export function ContactSection() {
                   )}
                 />
                 <Button 
-                  type="button"
-                  onClick={handleFormSubmit}
+                  type="submit"
                   disabled={form.formState.isSubmitting} 
                   className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
                 >
