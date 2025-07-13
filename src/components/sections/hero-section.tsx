@@ -14,11 +14,11 @@ export function HeroSection() {
             <div className="grid gap-10 lg:grid-cols-3">
               <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                 <Image
-                  src="https://placehold.co/160x160.png"
+                  src="https://storage.googleapis.com/maker-studio-5a559.appspot.com/user-hcw53so1b5a2ygyuzzi6/hcw5k328498f395f1q9w.png"
                   alt="Sarvesh Ahuja"
                   width={160}
                   height={160}
-                  className="mb-4 rounded-full"
+                  className="mb-4 rounded-full object-cover aspect-square"
                   data-ai-hint="professional portrait"
                 />
                 <h1 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
