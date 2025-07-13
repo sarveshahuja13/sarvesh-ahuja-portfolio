@@ -1,3 +1,4 @@
+
 import Groq from 'groq-sdk';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 
@@ -106,6 +107,12 @@ June 2023 – September 2023
 <name>Image Segmentation via MST Algorithm</name>
 • Used Kruskal’s MST for background segmentation.  
 • Implemented in Python with analysis of computational performance.
+</project>
+
+<project>
+<name>Optimized Diaspora Evacuation System (ODES)</name>
+• Problem/Solution: To replace slow, manual emergency evacuation processes during international crises, I engineered the Optimized Diaspora Evacuation System (ODES), a full-stack platform that automates logistical planning by analyzing population data and assigning optimal flight routes.
+• Tech Stack: React, Python (Flask, Pandas, scikit-learn), Folium, and Docker.
 </project>
 
 </selected_projects>
