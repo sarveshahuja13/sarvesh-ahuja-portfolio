@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -30,13 +30,18 @@ export function HeroSection() {
                 </h2>
                 <div className="mt-6 flex justify-center lg:justify-start space-x-2">
                   <Button variant="outline" size="icon" asChild>
-                    <Link href="https://github.com/sarvesh-ahuja" aria-label="GitHub" target="_blank">
+                    <Link href="https://github.com/sarveshahuja13" aria-label="GitHub" target="_blank">
                       <Github className="h-5 w-5" />
                     </Link>
                   </Button>
                   <Button variant="outline" size="icon" asChild>
-                    <Link href="https://www.linkedin.com/in/sarvesh-ahuja/" aria-label="LinkedIn" target="_blank">
+                    <Link href="https://www.linkedin.com/in/sarvesh-ahuja-ai-engineer" aria-label="LinkedIn" target="_blank">
                       <Linkedin className="h-5 w-5" />
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="icon" asChild>
+                    <Link href="https://x.com/sarveshahuja13" aria-label="Twitter" target="_blank">
+                      <Twitter className="h-5 w-5" />
                     </Link>
                   </Button>
                   <Button variant="outline" size="icon" asChild>
