@@ -29,6 +29,7 @@ const formSchema = z.object({
 export function ContactSection() {
   const router = useRouter();
   const { toast } = useToast();
+  const formRef = React.useRef<HTMLFormElement>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,11 +41,11 @@ export function ContactSection() {
   });
 
   // This function is not used for submission anymore, but can be kept for validation logic
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    // This is intentionally left blank. 
-    // The form submission is handled by Netlify's standard form handling.
-    // We trigger the native form submission from the button's onClick handler
-    // after validation passes.
+  const handleFormSubmit = async () => {
+    const isValid = await form.trigger();
+    if (isValid && formRef.current) {
+      formRef.current.submit();
+    }
   };
 
   return (
@@ -62,11 +63,12 @@ export function ContactSection() {
           <CardContent>
             <Form {...form}>
               <form 
+                ref={formRef}
                 name="contact"
                 method="POST"
+                action="/?success=true"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
-                onSubmit={form.handleSubmit(onSubmit)} 
                 className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="contact" />
@@ -116,7 +118,8 @@ export function ContactSection() {
                   )}
                 />
                 <Button 
-                  type="submit" 
+                  type="button"
+                  onClick={handleFormSubmit}
                   disabled={form.formState.isSubmitting} 
                   className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
                 >
