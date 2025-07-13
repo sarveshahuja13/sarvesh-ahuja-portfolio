@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
+import { Chatbot } from '@/components/chatbot';
 
 export const metadata: Metadata = {
   title: 'Sarvesh Ahuja - AI & Data Engineer',
@@ -24,6 +25,7 @@ export default function RootLayout({
       </head>
       <body className={cn('font-body antialiased')}>
         {children}
+        <Chatbot />
         <Toaster />
       </body>
     </html>
