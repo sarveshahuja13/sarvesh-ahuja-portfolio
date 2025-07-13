@@ -50,10 +50,10 @@ export function Header() {
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="#" className="flex items-center gap-2">
+        <a href="#about" className="flex items-center gap-2">
           <Code2 className="h-6 w-6 text-primary" />
           <span className="font-headline text-lg font-bold">Sarvesh Ahuja</span>
-        </Link>
+        </a>
         <nav className="hidden items-center gap-2 md:flex">
           {navLinks.map(({ href, label }) => (
             <Button asChild variant="link" key={href} className={cn(

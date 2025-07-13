@@ -14,12 +14,13 @@ export function HeroSection() {
             <div className="grid gap-10 lg:grid-cols-3">
               <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                 <Image
-                  src="/profile.png"
+                  src="/profile.webp"
                   alt="Sarvesh Ahuja"
                   width={160}
                   height={160}
                   className="mb-4 rounded-full object-cover aspect-square"
                   data-ai-hint="professional portrait"
+                  priority
                 />
                 <h1 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
                   Sarvesh Ahuja
@@ -29,12 +30,12 @@ export function HeroSection() {
                 </h2>
                 <div className="mt-6 flex justify-center lg:justify-start space-x-2">
                   <Button variant="outline" size="icon" asChild>
-                    <Link href="#" aria-label="GitHub">
+                    <Link href="https://github.com/sarvesh-ahuja" aria-label="GitHub" target="_blank">
                       <Github className="h-5 w-5" />
                     </Link>
                   </Button>
                   <Button variant="outline" size="icon" asChild>
-                    <Link href="#" aria-label="LinkedIn">
+                    <Link href="https://www.linkedin.com/in/sarvesh-ahuja/" aria-label="LinkedIn" target="_blank">
                       <Linkedin className="h-5 w-5" />
                     </Link>
                   </Button>
