@@ -1,5 +1,5 @@
 import Groq from 'groq-sdk';
-import { Stream, OpenAIStream, StreamingTextResponse } from 'ai';
+import { OpenAIStream, StreamingTextResponse } from 'ai';
 
 export const runtime = 'edge';
 
@@ -82,7 +82,7 @@ Machine Learning Intern
 Locuz Enterprise Solutions Ltd  
 June 2023 – September 2023
 
-• Built a conversational AI dashboard assistant for green energy clients using GPT-4.  
+• Built a conversational AI chatbot assistant for green energy clients using GPT-4.  
 • Created real-time dashboards in Grafana using InfluxDB and Grafana HTTP API.  
 • Implemented voice emotion detection with ML models and Gradio UI.  
 • Auto-generated Flux queries using GPT-4 for analytics.
@@ -147,6 +147,9 @@ export async function POST(req: Request) {
   const response = await groq.chat.completions.create({
     model: 'compound-beta-mini', 
     stream: true,
+    temperature: 1,
+    max_tokens: 1024,
+    top_p: 1,
     messages: [
         {
             role: 'system',
