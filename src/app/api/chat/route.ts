@@ -82,7 +82,7 @@ Machine Learning Intern
 Locuz Enterprise Solutions Ltd  
 June 2023 – September 2023
 
-• Built a conversational AI chatbot assistant for green energy clients using GPT-4.  
+• Built a conversational AI dashboard assistant for green energy clients using GPT-4.  
 • Created real-time dashboards in Grafana using InfluxDB and Grafana HTTP API.  
 • Implemented voice emotion detection with ML models and Gradio UI.  
 • Auto-generated Flux queries using GPT-4 for analytics.
