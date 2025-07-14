@@ -23,7 +23,8 @@ import {
 } from '@/components/ui/tooltip';
 import { useChatbot } from './chatbot-provider';
 
-const botFaces = ["^ - ^", "- - -", "> - <", "0_0", "^_~"];
+const originalFace = "◕—◕";
+const glitchFaces = ["●—●", "◕—◕", "●︶●", "●﹏●", "●~●", "○—○"];
 
 export function Chatbot() {
   const {
@@ -40,13 +41,26 @@ export function Chatbot() {
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [currentFrame, setCurrentFrame] = useState(0);
+  const [currentFace, setCurrentFace] = useState(originalFace);
+  const [isGlitching, setIsGlitching] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentFrame(prevFrame => (prevFrame + 1) % botFaces.length);
-    }, 1500); // Change face every 1.5s
-    return () => clearInterval(interval);
+    const glitchBot = () => {
+      setIsGlitching(true);
+      let count = 0;
+      const glitchInterval = setInterval(() => {
+        setCurrentFace(glitchFaces[Math.floor(Math.random() * glitchFaces.length)]);
+        count++;
+        if (count > 4) {
+          clearInterval(glitchInterval);
+          setCurrentFace(originalFace);
+          setIsGlitching(false);
+        }
+      }, 80);
+    };
+
+    const autoGlitchInterval = setInterval(glitchBot, 6000);
+    return () => clearInterval(autoGlitchInterval);
   }, []);
 
   useEffect(() => {
@@ -91,8 +105,8 @@ export function Chatbot() {
                   onClick={handleOpenChat}
                   aria-label="Open chat"
                 >
-                  <pre className="text-primary font-mono text-base leading-tight text-center">
-                    {botFaces[currentFrame]}
+                  <pre className={cn("text-primary font-mono text-base leading-tight text-center", isGlitching && "glitch")}>
+                    {currentFace}
                   </pre>
                 </Button>
               </div>
