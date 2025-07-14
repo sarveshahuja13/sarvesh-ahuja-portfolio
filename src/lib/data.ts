@@ -33,9 +33,9 @@ export const experiences = [
        {
         name: 'Key Responsibilities',
         description: [
+            'Prototyped this agentic system in Jan 2023 - before agents became cool/more matured ;)',
             'Built a conversational AI dashboard assistant for green energy clients using GPT-4 and Gradio.',
             'Integrated InfluxDB for time-series energy data and created real-time dashboards in Grafana.',
-            'Generated Flux queries and enabled voice emotion detection using a custom ML model.',
         ],
       }
     ]
