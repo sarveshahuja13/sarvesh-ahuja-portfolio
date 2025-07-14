@@ -143,7 +143,7 @@ export function Chatbot() {
                     )}
                     <div
                       className={cn(
-                        'max-w-[85%] rounded-lg p-3 text-sm prose dark:prose-invert prose-p:my-2 prose-headings:my-3',
+                        'max-w-[85%] rounded-lg p-3 text-sm prose-p:my-2 prose-headings:my-3',
                         m.role === 'user'
                           ? 'bg-primary text-primary-foreground'
                           : 'bg-muted'
