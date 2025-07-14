@@ -9,9 +9,9 @@ export const experiences = [
       {
         name: 'Project: CCAS Pega',
         description: [
-          'Led deployment of a customer data platform to production.',
+          'Built and deployed an end-to-end, event-driven data-hydration pipeline that ingests Avro files and publishes to a Data Mesh as Apache Iceberg tables.',
           'Collaborated with platform teams to enhance data hydration, boosting system resilience by ~85%.',
-          'Built backend components: 7 Glue Jobs, 5 Lambdas, CI/CD with Jenkins and Terraform.',
+          'Designed cloud-native orchestration with AWS Glue, Step Functions, Lambda, SNS, SQS, and Glue Crawlers, delivered through Terraform HCP and Jenkins JTE CI/CD.',
         ],
       },
       {
