@@ -36,31 +36,12 @@ export function Chatbot() {
   } = useChatbot();
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    // Preload audio
-    audioRef.current = new Audio('/chime.mp3');
-  }, []);
-
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Show greeting after 3 seconds, but only if the chat isn't already open
-    const timer = setTimeout(() => {
-      if (!isOpen) {
-        setShowGreeting(true);
-      }
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [isOpen, setShowGreeting]);
-  
-  useEffect(() => {
-    // Hide greeting if chat is opened
-    if (isOpen) {
-      setShowGreeting(false);
-    }
-  }, [isOpen, setShowGreeting]);
+    audioRef.current = new Audio('/chime.mp3');
+  }, []);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -79,10 +60,11 @@ export function Chatbot() {
   };
 
   const handleOpenChat = () => {
+    console.log("Opening chat...");
     playSound();
     setIsOpen(true);
     setShowGreeting(false);
-  }
+  };
 
   return (
     <>
@@ -154,11 +136,9 @@ export function Chatbot() {
                     >
                       {m.role === 'assistant' ? (
                         <ReactMarkdown
+                         className="prose prose-sm dark:prose-invert"
                          components={{
-                            p: ({ node, ...props }) => <p className="my-2" {...props} />,
-                            h1: ({ node, ...props }) => <h1 className="my-3 font-bold text-lg" {...props} />,
-                            h2: ({ node, ...props }) => <h2 className="my-3 font-bold text-base" {...props} />,
-                            h3: ({ node, ...props }) => <h3 className="my-3 font-bold text-base" {...props} />,
+                            p: ({ node, ...props }) => <p className="text-foreground" {...props} />,
                          }}
                         >{m.content}</ReactMarkdown>
                       ) : (
