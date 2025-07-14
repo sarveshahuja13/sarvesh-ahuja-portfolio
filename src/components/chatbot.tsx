@@ -35,13 +35,8 @@ export function Chatbot() {
     isLoading,
   } = useChatbot();
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    audioRef.current = new Audio('/chime.mp3');
-  }, []);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -52,16 +47,7 @@ export function Chatbot() {
     }
   }, [messages]);
 
-  const playSound = () => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(error => console.log("Audio play failed:", error));
-    }
-  };
-
   const handleOpenChat = () => {
-    console.log("Opening chat...");
-    playSound();
     setIsOpen(true);
     setShowGreeting(false);
   };
@@ -131,14 +117,15 @@ export function Chatbot() {
                         'max-w-[85%] rounded-lg p-3 text-sm',
                         m.role === 'user'
                           ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted text-foreground'
+                          : 'bg-muted'
                       )}
                     >
                       {m.role === 'assistant' ? (
                         <ReactMarkdown
-                         className="prose-sm prose-p:text-foreground prose-li:text-foreground"
+                         className="streaming-text"
                          components={{
                            p: ({ node, ...props }) => <p className="text-foreground" {...props} />,
+                           li: ({ node, ...props }) => <li className="text-foreground" {...props} />,
                          }}
                         >{m.content}</ReactMarkdown>
                       ) : (

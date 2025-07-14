@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { Chatbot } from '@/components/chatbot';
 import { ChatbotProvider } from '@/components/chatbot-provider';
 import { ThemeProvider } from '@/components/theme-provider';
+import { MusicPlayer } from '@/components/music-player';
 
 export const metadata: Metadata = {
   title: 'Sarvesh Ahuja - AI & Data Engineer',
@@ -34,6 +35,7 @@ export default function RootLayout({
           <ChatbotProvider>
             {children}
             <Chatbot />
+            <MusicPlayer />
           </ChatbotProvider>
           <Toaster />
         </ThemeProvider>
