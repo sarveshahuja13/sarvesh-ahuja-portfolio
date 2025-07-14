@@ -6,6 +6,7 @@ import { Code2, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { ThemeSwitcher } from './theme-switcher';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -55,45 +56,48 @@ export function Header() {
           <Code2 className="h-6 w-6 text-accent" />
           <span className="font-headline text-lg font-bold">Sarvesh Ahuja</span>
         </a>
-        <nav className="hidden items-center gap-1 md:flex">
-          {navLinks.map(({ href, label }) => (
-            <Button asChild variant="ghost" key={href} className={cn(
-              "text-muted-foreground transition-colors hover:text-accent font-semibold",
-              activeSection === href && 'text-accent bg-accent/10'
-            )}>
-              <a href={href}>{label}</a>
-            </Button>
-          ))}
-        </nav>
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" className="text-accent border-accent/50">
-                <Menu className="h-5 w-5 mr-2" />
-                Menu
+        <div className="flex items-center gap-2">
+          <nav className="hidden items-center gap-1 md:flex">
+            {navLinks.map(({ href, label }) => (
+              <Button asChild variant="ghost" key={href} className={cn(
+                "text-muted-foreground transition-colors hover:text-accent font-semibold",
+                activeSection === href && 'text-accent bg-accent/10'
+              )}>
+                <a href={href}>{label}</a>
               </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-background/90 backdrop-blur-sm">
-              <SheetHeader>
-                <SheetTitle className="text-left text-accent font-headline">Navigation</SheetTitle>
-              </SheetHeader>
-              <nav className="flex flex-col gap-4 mt-8">
-                {navLinks.map(({ href, label }) => (
-                  <SheetClose asChild key={href}>
-                    <a
-                      href={href}
-                      className={cn(
-                        "text-lg text-muted-foreground transition-colors hover:text-accent font-semibold",
-                         activeSection === href && 'text-accent'
-                      )}
-                    >
-                      {label}
-                    </a>
-                  </SheetClose>
-                ))}
-              </nav>
-            </SheetContent>
-          </Sheet>
+            ))}
+          </nav>
+          <ThemeSwitcher />
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon" className="text-accent border-accent/50">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Open Menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="bg-background/90 backdrop-blur-sm">
+                <SheetHeader>
+                  <SheetTitle className="text-left text-accent font-headline">Navigation</SheetTitle>
+                </SheetHeader>
+                <nav className="flex flex-col gap-4 mt-8">
+                  {navLinks.map(({ href, label }) => (
+                    <SheetClose asChild key={href}>
+                      <a
+                        href={href}
+                        className={cn(
+                          "text-lg text-muted-foreground transition-colors hover:text-accent font-semibold",
+                           activeSection === href && 'text-accent'
+                        )}
+                      >
+                        {label}
+                      </a>
+                    </SheetClose>
+                  ))}
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
