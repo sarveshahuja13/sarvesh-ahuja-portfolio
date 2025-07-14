@@ -1,8 +1,6 @@
-
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
-import { useChat } from 'ai/react';
+import { useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -22,23 +20,27 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { useChatbot } from './chatbot-provider';
 
 export function Chatbot() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [showGreeting, setShowGreeting] = useState(false);
+  const {
+    isOpen,
+    setIsOpen,
+    showGreeting,
+    setShowGreeting,
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    isLoading,
+  } = useChatbot();
+
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     // Preload audio
     audioRef.current = new Audio('/chime.mp3');
   }, []);
-
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: '/api/chat',
-    onFinish: () => {
-      // Optional: any action after a message is received
-    },
-  });
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -51,14 +53,14 @@ export function Chatbot() {
       }
     }, 3000);
     return () => clearTimeout(timer);
-  }, [isOpen]);
+  }, [isOpen, setShowGreeting]);
   
   useEffect(() => {
     // Hide greeting if chat is opened
     if (isOpen) {
       setShowGreeting(false);
     }
-  }, [isOpen]);
+  }, [isOpen, setShowGreeting]);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
