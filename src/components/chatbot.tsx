@@ -25,6 +25,12 @@ import {
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    // Preload audio
+    audioRef.current = new Audio('/chime.mp3');
+  }, []);
 
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
     api: '/api/chat',
@@ -62,7 +68,15 @@ export function Chatbot() {
     }
   }, [messages]);
 
+  const playSound = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(error => console.log("Audio play failed:", error));
+    }
+  };
+
   const handleOpenChat = () => {
+    playSound();
     setIsOpen(true);
     setShowGreeting(false);
   }
