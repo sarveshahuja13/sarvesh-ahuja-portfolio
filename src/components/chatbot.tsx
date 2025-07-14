@@ -23,53 +23,7 @@ import {
 } from '@/components/ui/tooltip';
 import { useChatbot } from './chatbot-provider';
 
-const asciiFrames = [
-  `
-  .-.
- (o.o)
-  |=|
- /   \\
-'-----'
-  `,
-  `
-  .-.
- (o.o)
-  |=|
- /| | \\
-'-| |-'
-  `,
-  `
-  .-.
- (*.*)
-  |=|
- /| | \\
-'-| |-'
-  `,
-  `
-  .-.
- (^.^)
-  |=|
- /   \\
-'-----'
-  `,
-];
-
-const glitchFrames = [
-  `
-  .--.
- (o.o)
-  |=|
- /| | \\
-'-| |-'
-  `,
-  `
-  .-.
- (*.*)
-  |=|
- /| | \\
-'-| |-'
-  `
-];
+const botFaces = ["^ - ^", "- - -", "> - <", "0_0", "^_~"];
 
 export function Chatbot() {
   const {
@@ -90,8 +44,8 @@ export function Chatbot() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentFrame(prevFrame => (prevFrame + 1) % asciiFrames.length);
-    }, 500); // Change frame every 500ms
+      setCurrentFrame(prevFrame => (prevFrame + 1) % botFaces.length);
+    }, 1500); // Change face every 1.5s
     return () => clearInterval(interval);
   }, []);
 
@@ -137,8 +91,8 @@ export function Chatbot() {
                   onClick={handleOpenChat}
                   aria-label="Open chat"
                 >
-                  <pre className="text-primary font-mono text-[8px] leading-tight text-center">
-                    {asciiFrames[currentFrame]}
+                  <pre className="text-primary font-mono text-lg leading-tight text-center">
+                    {botFaces[currentFrame]}
                   </pre>
                 </Button>
               </div>
