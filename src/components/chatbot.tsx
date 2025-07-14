@@ -86,12 +86,12 @@ export function Chatbot() {
             <TooltipTrigger asChild>
               <div className="chatbot-border-glow">
                 <Button
-                  className="h-24 w-24 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground flex items-center justify-center"
+                  className="h-20 w-20 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground flex items-center justify-center"
                   size="icon"
                   onClick={handleOpenChat}
                   aria-label="Open chat"
                 >
-                  <pre className="text-primary font-mono text-lg leading-tight text-center">
+                  <pre className="text-primary font-mono text-base leading-tight text-center">
                     {botFaces[currentFrame]}
                   </pre>
                 </Button>
