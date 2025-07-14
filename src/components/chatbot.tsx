@@ -86,7 +86,7 @@ export function Chatbot() {
             <TooltipTrigger asChild>
               <div className="chatbot-border-glow">
                 <Button
-                  className="h-20 w-20 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground flex items-center justify-center"
+                  className="h-16 w-16 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground flex items-center justify-center"
                   size="icon"
                   onClick={handleOpenChat}
                   aria-label="Open chat"
