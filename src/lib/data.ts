@@ -50,7 +50,8 @@ export const projects = [
     details: [
         'Built a voice-based chatbot using GPT-4, Whisper, and emotion detection ML models.',
         'Integrated via Gradio with HuggingFace for text-to-speech transformation.'
-    ]
+    ],
+    tags: ["GPT-4", "Whisper", "Gradio", "AI", "Python"]
   },
   {
     id: 2,
@@ -59,7 +60,8 @@ export const projects = [
     details: [
         'Developed a dashboard using AWS TimestreamDB and IoT Core to visualize sensor data.',
         'Applications: tank level monitoring, smart garbage bins, flood detection systems.'
-    ]
+    ],
+    tags: ["AWS", "IoT", "TimestreamDB", "Grafana", "Data"]
   },
   {
     id: 3,
@@ -68,7 +70,8 @@ export const projects = [
     details: [
         'Implemented Kruskal’s MST algorithm to segment images and cluster backgrounds.',
         'Analyzed computational complexity and performance across image sets.'
-    ]
+    ],
+    tags: ["Python", "Computer Vision", "Algorithms"]
   },
   {
     id: 4,
@@ -77,7 +80,8 @@ export const projects = [
     details: [
         'Replaced slow, manual evacuation processes by analyzing population data and assigning optimal flight routes.',
         'Tech Stack: React, Python (Flask, Pandas, scikit-learn), Folium, and Docker.'
-    ]
+    ],
+    tags: ["React", "Python", "Flask", "Docker", "Full-Stack"]
   }
 ];
 

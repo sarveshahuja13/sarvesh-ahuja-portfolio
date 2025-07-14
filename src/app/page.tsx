@@ -11,17 +11,19 @@ import { ContactSection } from "@/components/sections/contact-section";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-background">
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <FocusSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <CertificationsSection />
-        <EducationSection />
-        <HobbiesSection />
-        <ContactSection />
+        <div className="relative z-10 bg-background">
+            <FocusSection />
+            <ExperienceSection />
+            <ProjectsSection />
+            <CertificationsSection />
+            <HobbiesSection />
+            <EducationSection />
+            <ContactSection />
+        </div>
       </main>
       <Footer />
     </div>
