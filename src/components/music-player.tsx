@@ -15,7 +15,7 @@ export function MusicPlayer() {
     if (typeof window !== 'undefined') {
       audioRef.current = new Audio('/retro-bg.mp3');
       audioRef.current.loop = true;
-      audioRef.current.volume = 0.3;
+      audioRef.current.volume = 0.1;
 
       const playOnFirstInteraction = () => {
         if (audioRef.current && audioRef.current.paused) {
