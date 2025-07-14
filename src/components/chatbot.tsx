@@ -136,9 +136,9 @@ export function Chatbot() {
                     >
                       {m.role === 'assistant' ? (
                         <ReactMarkdown
-                         className="prose prose-sm dark:prose-invert"
+                         className="prose-sm prose-p:text-foreground prose-li:text-foreground"
                          components={{
-                            p: ({ node, ...props }) => <p className="text-foreground" {...props} />,
+                           p: ({ node, ...props }) => <p className="text-foreground" {...props} />,
                          }}
                         >{m.content}</ReactMarkdown>
                       ) : (
@@ -152,8 +152,20 @@ export function Chatbot() {
                     )}
                   </div>
                 ))}
-                 {isLoading && (
+                 {isLoading && messages.length > 0 && messages[messages.length-1].role !== 'user' && (
                     <div className="flex items-start gap-3 justify-start">
+                        <Avatar className="h-8 w-8 border shrink-0">
+                            <AvatarFallback><Bot size={18} /></AvatarFallback>
+                        </Avatar>
+                        <div className="bg-muted rounded-lg p-3 text-sm w-[85%]">
+                           <ReactMarkdown className="prose-sm prose-p:text-foreground prose-li:text-foreground streaming-text">
+                             {messages[messages.length - 1].content}
+                           </ReactMarkdown>
+                        </div>
+                    </div>
+                 )}
+                 {isLoading && messages.length > 0 && messages[messages.length-1].role === 'user' && (
+                     <div className="flex items-start gap-3 justify-start">
                         <Avatar className="h-8 w-8 border shrink-0">
                             <AvatarFallback><Bot size={18} /></AvatarFallback>
                         </Avatar>

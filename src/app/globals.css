@@ -159,3 +159,17 @@ a, button, [role="button"] {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+
+
+.streaming-text p:last-of-type::after {
+  content: '▋';
+  animation: blink 1s step-start infinite;
+  color: hsl(var(--accent));
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
