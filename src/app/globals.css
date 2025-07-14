@@ -137,3 +137,20 @@ body {
   background-size: 200% 100%;
   animation: background-pan 15s ease-in-out infinite;
 }
+
+
+@keyframes move-robot {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.robot {
+  position: absolute;
+  animation-name: move-robot;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}

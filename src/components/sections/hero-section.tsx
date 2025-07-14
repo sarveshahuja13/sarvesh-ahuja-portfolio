@@ -3,14 +3,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Github, Linkedin, Mail, Twitter, ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { RetroRobots } from '@/components/retro-robots';
 
 export function HeroSection() {
   return (
     <section id="about" className="w-full min-h-screen flex items-center justify-center futuristic-bg relative overflow-hidden">
+      <RetroRobots />
       <div className="container mx-auto px-4 md:px-6 z-10">
         <div className="grid gap-10 lg:grid-cols-2 items-center">
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
-            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary animate-pulse">
+            <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary animate-pulse">
               Sarvesh Ahuja
             </h1>
             <h2 className="text-2xl md:text-3xl font-medium text-foreground/80">

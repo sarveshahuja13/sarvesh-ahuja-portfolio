@@ -18,7 +18,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['Roboto Mono', 'monospace'],
-        headline: ['Orbitron', 'sans-serif'],
+        headline: ['"Press Start 2P"', 'cursive'],
       },
       colors: {
         background: 'hsl(var(--background))',
