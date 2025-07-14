@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
@@ -143,14 +144,21 @@ export function Chatbot() {
                     )}
                     <div
                       className={cn(
-                        'max-w-[85%] rounded-lg p-3 text-sm prose-p:my-2 prose-headings:my-3',
+                        'max-w-[85%] rounded-lg p-3 text-sm',
                         m.role === 'user'
                           ? 'bg-primary text-primary-foreground'
-                          : 'bg-muted'
+                          : 'bg-muted text-foreground'
                       )}
                     >
                       {m.role === 'assistant' ? (
-                        <ReactMarkdown>{m.content}</ReactMarkdown>
+                        <ReactMarkdown
+                         components={{
+                            p: ({ node, ...props }) => <p className="my-2" {...props} />,
+                            h1: ({ node, ...props }) => <h1 className="my-3 font-bold text-lg" {...props} />,
+                            h2: ({ node, ...props }) => <h2 className="my-3 font-bold text-base" {...props} />,
+                            h3: ({ node, ...props }) => <h3 className="my-3 font-bold text-base" {...props} />,
+                         }}
+                        >{m.content}</ReactMarkdown>
                       ) : (
                         m.content
                       )}
