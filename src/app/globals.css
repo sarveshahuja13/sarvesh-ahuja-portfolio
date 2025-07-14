@@ -184,7 +184,6 @@ a, button, [role="button"] {
   animation-iteration-count: infinite;
 }
 
-
 .streaming-text p:last-of-type::after {
   content: '▋';
   animation: blink 1s step-start infinite;

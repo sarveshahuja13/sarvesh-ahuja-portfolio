@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -22,6 +23,54 @@ import {
 } from '@/components/ui/tooltip';
 import { useChatbot } from './chatbot-provider';
 
+const asciiFrames = [
+  `
+  .-.
+ (o.o)
+  |=|
+ /   \\
+'-----'
+  `,
+  `
+  .-.
+ (o.o)
+  |=|
+ /| | \\
+'-| |-'
+  `,
+  `
+  .-.
+ (*.*)
+  |=|
+ /| | \\
+'-| |-'
+  `,
+  `
+  .-.
+ (^.^)
+  |=|
+ /   \\
+'-----'
+  `,
+];
+
+const glitchFrames = [
+  `
+  .--.
+ (o.o)
+  |=|
+ /| | \\
+'-| |-'
+  `,
+  `
+  .-.
+ (*.*)
+  |=|
+ /| | \\
+'-| |-'
+  `
+];
+
 export function Chatbot() {
   const {
     isOpen,
@@ -37,6 +86,14 @@ export function Chatbot() {
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [currentFrame, setCurrentFrame] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentFrame(prevFrame => (prevFrame + 1) % asciiFrames.length);
+    }, 500); // Change frame every 500ms
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -59,7 +116,7 @@ export function Chatbot() {
            <div className="absolute bottom-20 right-0 mb-2">
               <div className="bg-background border border-border/50 shadow-lg rounded-lg p-3 max-w-[220px] text-sm text-foreground animate-in fade-in-50 slide-in-from-bottom-2">
                 <p>Hi there! Have questions about my projects or skills? Ask my AI assistant!</p>
-                <button 
+                <button
                   onClick={() => setShowGreeting(false)}
                   className="absolute -top-2 -right-2 h-5 w-5 bg-muted rounded-full flex items-center justify-center text-muted-foreground hover:bg-secondary hover:text-foreground transition-all"
                   aria-label="Dismiss"
@@ -73,14 +130,16 @@ export function Chatbot() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="chatbot-border-glow animate-bounce">
+              <div className="chatbot-border-glow">
                 <Button
-                  className="h-16 w-16 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground"
+                  className="h-24 w-24 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground flex items-center justify-center"
                   size="icon"
                   onClick={handleOpenChat}
                   aria-label="Open chat"
                 >
-                  <Bot className="h-8 w-8 text-primary" />
+                  <pre className="text-primary font-mono text-[8px] leading-tight text-center">
+                    {asciiFrames[currentFrame]}
+                  </pre>
                 </Button>
               </div>
             </TooltipTrigger>
