@@ -16,14 +16,14 @@ export function ExperienceSection() {
             My professional journey and key contributions.
           </p>
         </div>
-        
+
         <div className="relative max-w-3xl mx-auto">
           <div className="absolute left-4 top-4 h-full w-0.5 bg-gradient-to-b from-transparent via-primary/30 to-transparent -z-10"></div>
           {experiences.map((exp) => (
             <div key={exp.id} className="mb-12 pl-12 relative">
-               <div className="absolute -left-0.5 top-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-background">
+              <div className="absolute -left-0.5 top-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-background">
                 <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 ring-8 ring-background">
-                    <Briefcase className="h-4 w-4 text-primary" />
+                  <Briefcase className="h-4 w-4 text-primary" />
                 </div>
               </div>
 
@@ -31,11 +31,11 @@ export function ExperienceSection() {
                 <Card className="shadow-lg border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300">
                   <CardHeader>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-                        <div>
-                            <CardTitle className="font-headline text-xl text-foreground/90">{exp.role}</CardTitle>
-                            <CardDescription className="font-medium mt-1 text-muted-foreground">{exp.company}</CardDescription>
-                        </div>
-                        <Badge variant="secondary" className="w-fit font-normal text-sm mt-1 sm:mt-0 bg-secondary/50 text-secondary-foreground/80">{exp.date}</Badge>
+                      <div>
+                        <CardTitle className="font-headline text-xl text-foreground/90">{exp.role}</CardTitle>
+                        <CardDescription className="font-medium mt-1 text-muted-foreground">{exp.company}</CardDescription>
+                      </div>
+                      <Badge variant="secondary" className="w-fit font-normal text-sm mt-1 sm:mt-0 bg-secondary/50 text-secondary-foreground/80">{exp.date}</Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
@@ -49,6 +49,19 @@ export function ExperienceSection() {
                         </ul>
                       </div>
                     ))}
+
+                    {exp.skills && (
+                      <div className="mt-6 pt-4 border-t border-border/50">
+                        <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Tech Stack</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.skills.map((skill, i) => (
+                            <Badge key={i} variant="outline" className="border-primary/20 bg-primary/5 text-primary text-xs hover:bg-primary/10 transition-colors">
+                              {skill}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </div>

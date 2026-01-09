@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils';
 import { Chatbot } from '@/components/chatbot';
 import { ChatbotProvider } from '@/components/chatbot-provider';
 import { ThemeProvider } from '@/components/theme-provider';
-import { MusicPlayer } from '@/components/music-player';
 
 export const metadata: Metadata = {
   title: 'Sarvesh Ahuja - AI & Data Engineer',
@@ -23,19 +22,18 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className={cn('font-body antialiased bg-background text-foreground')} suppressHydrationWarning>
+      <body className={cn('font-sans antialiased bg-[#050505] text-white selection:bg-cyan-500/30')} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <ChatbotProvider>
             {children}
             <Chatbot />
-            <MusicPlayer />
           </ChatbotProvider>
           <Toaster />
         </ThemeProvider>
