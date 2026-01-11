@@ -84,9 +84,9 @@ export function Chatbot() {
       <div className="chatbot-container">
         {showGreeting && (
           <div className="absolute bottom-20 right-0 mb-2 w-[300px]">
-            <div className="bg-background/80 backdrop-blur-md border border-primary/20 shadow-[0_0_15px_rgba(6,182,212,0.15)] rounded-lg p-3 animate-in fade-in-50 slide-in-from-bottom-2">
+            <div className="bg-background/80 backdrop-blur-md border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] rounded-lg p-3 animate-in fade-in-50 slide-in-from-bottom-2">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-primary">AI Assistant</span>
+                <span className="text-xs font-semibold text-white">AI Assistant</span>
                 <button
                   onClick={() => setShowGreeting(false)}
                   className="text-muted-foreground hover:text-foreground transition-colors"
@@ -114,7 +114,7 @@ export function Chatbot() {
                   value={input}
                   onChange={handleInputChange}
                   placeholder="Ask me anything..."
-                  className="pr-10 h-9 bg-background/50 border-input/50 focus:border-primary focus:ring-primary backdrop-blur-sm text-sm"
+                  className="pr-10 h-9 bg-background/50 border-input/50 focus:border-white focus:ring-white backdrop-blur-sm text-sm"
                   onFocus={() => {
                     // Optional: Open chat immediately on focus? 
                     // Or let them type here first. Let's let them type.
@@ -124,7 +124,7 @@ export function Chatbot() {
                   type="submit"
                   size="icon"
                   variant="ghost"
-                  className="absolute right-0 top-0 h-9 w-9 text-primary hover:text-primary hover:bg-transparent"
+                  className="absolute right-0 top-0 h-9 w-9 text-white hover:text-white hover:bg-transparent"
                   disabled={!input.trim()}
                 >
                   <CornerDownLeft className="h-4 w-4" />
@@ -138,12 +138,12 @@ export function Chatbot() {
             <TooltipTrigger asChild>
               <div className="chatbot-border-glow">
                 <Button
-                  className="h-16 w-16 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground flex items-center justify-center"
+                  className="h-16 w-16 rounded-full shadow-lg bg-background hover:bg-background/80 text-foreground flex items-center justify-center border border-white/10"
                   size="icon"
                   onClick={handleOpenChat}
                   aria-label="Open chat"
                 >
-                  <pre className={cn("text-primary font-mono text-base leading-tight text-center", isGlitching && "glitch")}>
+                  <pre className={cn("text-white font-mono text-base leading-tight text-center", isGlitching && "glitch")}>
                     {currentFace}
                   </pre>
                 </Button>
@@ -162,10 +162,10 @@ export function Chatbot() {
             <GridScan
               sensitivity={0.55}
               lineThickness={1}
-              linesColor="#2b0033"
+              linesColor="#1a1a1a"
               gridScale={0.1}
-              scanColor="#06b6d4"
-              scanOpacity={0.4}
+              scanColor="#ffffff"
+              scanOpacity={0.2}
               enablePost
               bloomIntensity={0.6}
               chromaticAberration={0.002}

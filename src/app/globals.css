@@ -10,8 +10,8 @@ body {
   font-family: 'Rajdhani', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #030014;
-  /* Deep space background */
+  background-color: #0a0a0a;
+  /* Metallic dark background */
   color: #fff;
   overflow-x: hidden;
 }
@@ -36,43 +36,46 @@ body {
 
 @layer base {
   :root {
-    --background: 260 50% 4%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 4%;
+    /* Deep black-gray */
+    --foreground: 0 0% 98%;
 
-    --card: 260 50% 6%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 260 50% 4%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 180 100% 50%;
-    /* Cyan */
-    --primary-foreground: 260 50% 4%;
+    --primary: 0 0% 98%;
+    /* White/Silver */
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 270 100% 60%;
-    /* Purple */
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 30%;
+    /* Dark Metal */
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 260 30% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 0 0% 12%;
+    /* Darker Metal */
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 180 100% 50%;
-    /* Cyan Accent */
-    --accent-foreground: 260 50% 4%;
+    --accent: 0 0% 85%;
+    /* Platinum */
+    --accent-foreground: 0 0% 4%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 260 30% 15%;
-    --input: 260 30% 15%;
-    --ring: 180 100% 50%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 80%;
+    /* Silver ring */
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 260 50% 4%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
     /* ... same as root since we are forcing dark/hacker mode */
   }
 }

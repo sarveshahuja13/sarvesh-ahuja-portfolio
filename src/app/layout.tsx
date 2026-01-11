@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
       <body className={cn(
-        'font-sans antialiased bg-[#050505] text-white selection:bg-cyan-500/30',
+        'font-sans antialiased bg-background text-foreground selection:bg-white/20 selection:text-white',
         jetbrainsMono.variable,
         rajdhani.variable
       )} suppressHydrationWarning>

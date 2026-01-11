@@ -40,7 +40,7 @@ export const CardNav: React.FC<CardNavProps> = ({ items, className, activeItem }
                         href={item.href}
                         className={cn(
                             "relative px-4 py-2 text-sm font-mono font-medium tracking-wider transition-colors duration-200 uppercase z-10",
-                            isActive ? "text-cyan-400" : "text-gray-400 hover:text-cyan-300"
+                            isActive ? "text-white" : "text-gray-400 hover:text-white/80"
                         )}
                         onMouseEnter={() => setHoveredIndex(index)}
                     >
@@ -51,7 +51,7 @@ export const CardNav: React.FC<CardNavProps> = ({ items, className, activeItem }
                         <AnimatePresence>
                             {hoveredIndex === index && (
                                 <motion.div
-                                    className="absolute inset-0 rounded-lg bg-cyan-500/10 border border-cyan-500/30"
+                                    className="absolute inset-0 rounded-lg bg-white/10 border border-white/20"
                                     layoutId="card-nav-hover"
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
@@ -65,7 +65,7 @@ export const CardNav: React.FC<CardNavProps> = ({ items, className, activeItem }
                         {isActive && (
                             <motion.div
                                 layoutId="card-nav-active"
-                                className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.8)]"
+                                className="absolute bottom-0 left-0 w-full h-[2px] bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]"
                             />
                         )}
                     </a>
