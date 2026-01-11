@@ -172,8 +172,17 @@ export function Chatbot() {
               noiseIntensity={0.01}
             />
           </div>
-          <DialogHeader className="p-4 border-b shrink-0 relative z-10 bg-background/80 backdrop-blur-sm">
+          <DialogHeader className="p-4 border-b shrink-0 relative z-10 bg-background/80 backdrop-blur-sm flex flex-row items-center justify-between">
             <DialogTitle className="font-headline text-primary">Chat with my AI Assistant</DialogTitle>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-6 w-6 text-muted-foreground hover:text-foreground"
+              onClick={() => setIsOpen(false)}
+            >
+              <X className="h-4 w-4" />
+              <span className="sr-only">Close</span>
+            </Button>
           </DialogHeader>
           <div className="flex-1 overflow-hidden relative z-10">
             <ScrollArea className="h-full" ref={scrollAreaRef}>

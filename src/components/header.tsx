@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Code2, Menu, MessageCircle } from 'lucide-react';
+import { Code2, Menu, MessageCircle, Bot } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -87,13 +87,13 @@ export function Header() {
 
           <div className="md:hidden flex items-center gap-2">
             <Button
-              variant="outline"
-              size="icon"
-              className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white"
+              size="sm"
+              className="relative overflow-hidden rounded-full bg-gradient-to-b from-zinc-300 via-white to-zinc-400 text-black border-2 border-white/50 shadow-[0_0_15px_rgba(255,255,255,0.3)] font-headline text-[10px] tracking-widest hover:brightness-110 active:scale-95 transition-all"
               onClick={() => setIsOpen(true)}
             >
-              <MessageCircle className="h-5 w-5" />
-              <span className="sr-only">Open Chat</span>
+              <Bot className="w-4 h-4 mr-2" />
+              CHAT AI
+              <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_5px_rgba(34,197,94,0.8)]" />
             </Button>
             <Sheet>
               <SheetTrigger asChild>
