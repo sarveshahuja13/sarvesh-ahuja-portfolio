@@ -58,7 +58,7 @@ export function HeroSection() {
                 </a>
               </Button>
 
-              <div className="flex space-x-3">
+              <div className="flex space-x-3 relative z-50">
                 {[
                   { icon: Github, link: "https://github.com/sarveshahuja13" },
                   { icon: Linkedin, link: "https://www.linkedin.com/in/sarvesh-ahuja-ai-engineer" },
@@ -77,10 +77,10 @@ export function HeroSection() {
 
           <div className="relative flex justify-center items-center h-full">
             {/* Abstract glow behind profile */}
-            <div className="absolute w-[500px] h-[500px] bg-gradient-to-tr from-zinc-500/10 to-slate-500/10 rounded-full blur-[100px] animate-pulse"></div>
+            <div className="absolute w-[500px] h-[500px] bg-gradient-to-tr from-zinc-500/10 to-slate-500/10 rounded-full blur-[100px] animate-pulse pointer-events-none"></div>
 
             <div className="relative z-10 group flex justify-center items-center">
-              <div className="absolute -inset-10 bg-gradient-to-r from-zinc-500/20 to-slate-400/20 rounded-full blur-[80px] opacity-50 group-hover:opacity-75 transition duration-1000"></div>
+              <div className="absolute -inset-10 bg-gradient-to-r from-zinc-500/20 to-slate-400/20 rounded-full blur-[80px] opacity-50 group-hover:opacity-75 transition duration-1000 pointer-events-none"></div>
               <AppleLogo />
             </div>
           </div>
