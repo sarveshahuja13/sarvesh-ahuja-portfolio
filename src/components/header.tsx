@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Code2, Menu } from 'lucide-react';
+import { Code2, Menu, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { ThemeSwitcher } from './theme-switcher';
 import CardNav from './CardNav';
+import { useChatbot } from './chatbot-provider';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -22,6 +23,7 @@ const navLinks = [
 export function Header() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const { setIsOpen } = useChatbot();
 
   useEffect(() => {
     // Use IntersectionObserver for more accurate section tracking
@@ -83,7 +85,16 @@ export function Header() {
             />
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="icon"
+              className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white"
+              onClick={() => setIsOpen(true)}
+            >
+              <MessageCircle className="h-5 w-5" />
+              <span className="sr-only">Open Chat</span>
+            </Button>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white">

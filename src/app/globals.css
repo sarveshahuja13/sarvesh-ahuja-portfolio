@@ -130,6 +130,12 @@ body {
   z-index: 50;
 }
 
+@media (max-width: 768px) {
+  .chatbot-container {
+    display: none;
+  }
+}
+
 @keyframes star-movement-bottom {
   0% {
     transform: translate(0%, 0%);
