@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { ChatbotProvider } from '@/components/chatbot-provider';
 import { ThemeProvider } from '@/components/theme-provider';
-import { ChatbotLazy } from '@/components/chatbot-lazy';
+import { Chatbot } from '@/components/chatbot';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -46,7 +46,7 @@ export default function RootLayout({
         >
           <ChatbotProvider>
             {children}
-            <ChatbotLazy />
+            <Chatbot />
           </ChatbotProvider>
           <Toaster />
         </ThemeProvider>
