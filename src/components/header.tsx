@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { ThemeSwitcher } from './theme-switcher';
+import CardNav from './CardNav';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -23,25 +24,39 @@ export function Header() {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
+    // Use IntersectionObserver for more accurate section tracking
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -35% 0px', // Active zone is between 20% and 65% from top
+        threshold: 0,
+      }
+    );
+
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 10);
-
-      const sections = navLinks.map(link => document.querySelector(link.href));
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i] as HTMLElement;
-        if (section && scrollPosition >= section.offsetTop) {
-          setActiveSection(navLinks[i].href);
-          break;
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    navLinks.forEach((link) => {
+      const section = document.querySelector(link.href);
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      navLinks.forEach((link) => {
+        const section = document.querySelector(link.href);
+        if (section) observer.unobserve(section);
+      });
+    };
   }, []);
 
   return (
@@ -61,21 +76,12 @@ export function Header() {
           </span>
         </a>
         <div className="flex items-center gap-6">
-          <nav className="hidden items-center gap-6 md:flex">
-            {navLinks.map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                className={cn(
-                  "relative text-sm font-mono font-medium tracking-wider text-gray-400 hover:text-cyan-400 transition-all duration-300 uppercase",
-                  "after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full",
-                  activeSection === href && 'text-cyan-400 after:w-full text-shadow-sm'
-                )}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
+          <div className="hidden md:block">
+            <CardNav
+              items={navLinks}
+              activeItem={activeSection}
+            />
+          </div>
 
           <div className="md:hidden">
             <Sheet>

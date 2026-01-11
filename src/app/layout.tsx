@@ -1,10 +1,24 @@
 import type { Metadata } from 'next';
+import { JetBrains_Mono, Rajdhani } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
-import { Chatbot } from '@/components/chatbot';
 import { ChatbotProvider } from '@/components/chatbot-provider';
 import { ThemeProvider } from '@/components/theme-provider';
+import { ChatbotLazy } from '@/components/chatbot-lazy';
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
+const rajdhani = Rajdhani({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-headline',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Sarvesh Ahuja - AI & Data Engineer',
@@ -19,12 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className={cn('font-sans antialiased bg-[#050505] text-white selection:bg-cyan-500/30')} suppressHydrationWarning>
+      <body className={cn(
+        'font-sans antialiased bg-[#050505] text-white selection:bg-cyan-500/30',
+        jetbrainsMono.variable,
+        rajdhani.variable
+      )} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -33,7 +46,7 @@ export default function RootLayout({
         >
           <ChatbotProvider>
             {children}
-            <Chatbot />
+            <ChatbotLazy />
           </ChatbotProvider>
           <Toaster />
         </ThemeProvider>

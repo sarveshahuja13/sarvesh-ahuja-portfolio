@@ -53,41 +53,42 @@ Sarvesh is a software developer with a strong foundation in AI, data engineering
 • DevOps & Cloud Architecture  
 </focus_areas>
 
-<current_role>
-Software Developer  
-Sun Life Global Solutions (SLGS), Bangalore  
-August 2024 – Present
-</current_role>
+<experience>
+<role>
+<title>Associate Analyst Developer</title>
+<company>Sun Life Global Solutions (SLGS), Bangalore</company>
+<period>August 2025 – Present</period>
+<projects>
+• Data Mesh Hydration Pipeline: developed/enhanced the company’s first Kafka->Iceberg event-based hydration pipeline (97% API calls reduced). Framework replicated by 3 other teams.
+• Impact: Saved 145k CAD by improving pipeline reliability.
+• Engineering: Reorganized Iceberg data partitioning (20M+ records) using AWS Athena & Glue.
+</projects>
+<skills>AWS Glue, Apache Iceberg, Data Engineering, DevOps, Amazon Athena, Distributed Caching</skills>
+</role>
 
-<projects_current>
+<role>
+<title>Graduate Engineer</title>
+<company>Sun Life Global Solutions (SLGS), Bangalore</company>
+<period>August 2024 – August 2025</period>
+<projects>
+• Data Hydration Pipeline: Hydrated event-based source data to data mesh as Iceberg tables. Implemented end-to-end CI/CD via Jenkins & Terraform HCP.
+• Health Data Platform (ETL): Developed custom ETL pipelines for Pillway data, significantly reducing data wrangling time for data scientists.
+</projects>
+<skills>Jenkins, Terraform, CI/CD, ETL pipelines</skills>
+</role>
 
-<project>
-<name>CCAS Pega</name>
-• Led deployment of a customer data platform to production.  
-• Collaborated with platform teams to improve data hydration, improving resilience by ~85%.  
-• Recovered missing data from upstream consumers.  
-• Built: 7 Glue Jobs, 5 AWS Lambdas, CI/CD via Jenkins and Terraform.
-</project>
-
-<project>
-<name>HDP</name>
-• Took ownership during a team transition and led deployment (May 2025).  
-• Designed and implemented CI/CD pipeline and serverless processing.  
-• Re-architected pipeline to reduce operational cost by 60% and boost reliability.
-</project>
-
-</projects_current>
-
-<past_experience>
-Machine Learning Intern  
-Locuz Enterprise Solutions Ltd  
-June 2023 – September 2023
-
-• Built a conversational AI chatbot assistant for green energy clients using GPT-4.  
-• Created real-time dashboards in Grafana using InfluxDB and Grafana HTTP API.  
-• Implemented voice emotion detection with ML models and Gradio UI.  
-• Auto-generated Flux queries using GPT-4 for analytics.
-</past_experience>
+<role>
+<title>Machine Learning Intern</title>
+<company>Locuz Enterprise Solutions Ltd</company>
+<period>June 2023 – September 2023</period>
+<projects>
+• Built a conversational AI dashboard assistant for green energy clients using GPT-4 and Gradio.
+• Integrated InfluxDB for time-series energy data and created real-time dashboards in Grafana.
+• Prototyped an early agentic system in June 2023.
+</projects>
+<skills>LLMs, AWS, Generative AI, Langchain, Python, Docker, InfluxDB</skills>
+</role>
+</experience>
 
 <selected_projects>
 
@@ -152,17 +153,17 @@ export async function POST(req: Request) {
   const { messages } = await req.json();
 
   const response = await groq.chat.completions.create({
-    model: 'compound-beta-mini', 
+    model: 'compound-beta-mini',
     stream: true,
     temperature: 1,
     max_tokens: 1024,
     top_p: 1,
     messages: [
-        {
-            role: 'system',
-            content: systemPrompt,
-        },
-        ...messages,
+      {
+        role: 'system',
+        content: systemPrompt,
+      },
+      ...messages,
     ],
   });
 
