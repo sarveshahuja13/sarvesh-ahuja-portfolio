@@ -5,8 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Send, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Send, AlertTriangle, CheckCircle, Loader2 } from 'lucide-react';
 import { Label } from '../ui/label';
+import Script from 'next/script';
 
 export function ContactSection() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -47,8 +48,27 @@ export function ContactSection() {
           </CardHeader>
           <CardContent>
             {/* Calendly inline widget begin */}
-            <div className="calendly-inline-widget" data-url="https://calendly.com/sarveshahuja13/30min" style={{ minWidth: '320px', height: '700px' }}></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <div className="relative" style={{ minHeight: '700px' }}>
+              {status === 'idle' && (
+                <div className="absolute inset-0 flex items-center justify-center bg-card/50 backdrop-blur-sm z-10 transition-opacity duration-300">
+                  <div className="flex flex-col items-center gap-2">
+                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                    <p className="text-sm text-muted-foreground">Loading Calendar...</p>
+                  </div>
+                </div>
+              )}
+              <div
+                className="calendly-inline-widget"
+                data-url="https://calendly.com/sarveshahuja13/30min"
+                style={{ minWidth: '320px', height: '700px' }}
+              />
+            </div>
+            <Script
+              type="text/javascript"
+              src="https://assets.calendly.com/assets/external/widget.js"
+              strategy="lazyOnload"
+              onLoad={() => setStatus('success')}
+            />
             {/* Calendly inline widget end */}
 
             {/* 
