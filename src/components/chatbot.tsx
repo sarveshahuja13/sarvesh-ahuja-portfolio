@@ -191,7 +191,7 @@ export function Chatbot() {
                   <div
                     key={m.id}
                     className={cn(
-                      'flex items-start gap-3',
+                      'flex w-full items-start gap-3',
                       m.role === 'user' ? 'justify-end' : 'justify-start'
                     )}
                   >
@@ -202,7 +202,7 @@ export function Chatbot() {
                     )}
                     <div
                       className={cn(
-                        'max-w-[85%] rounded-lg p-3 text-sm shadow-sm backdrop-blur-md',
+                        'relative max-w-[85%] min-w-0 rounded-lg p-3 text-sm shadow-sm backdrop-blur-md overflow-hidden',
                         m.role === 'user'
                           ? 'bg-primary/90 text-primary-foreground'
                           : 'bg-muted/80'
@@ -210,7 +210,7 @@ export function Chatbot() {
                     >
                       {m.role === 'assistant' ? (
                         <ReactMarkdown
-                          className="streaming-text prose prose-sm dark:prose-invert max-w-none break-words"
+                          className="prose prose-sm dark:prose-invert max-w-none break-words leading-normal"
                           remarkPlugins={[remarkGfm]}
                           components={{
                             p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
@@ -241,7 +241,7 @@ export function Chatbot() {
                           }}
                         >{m.content}</ReactMarkdown>
                       ) : (
-                        m.content
+                        <div className="whitespace-pre-wrap break-all leading-normal">{m.content}</div>
                       )}
                     </div>
                     {m.role === 'user' && (
