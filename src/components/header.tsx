@@ -69,14 +69,9 @@ export function Header() {
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <a href="#about" className="flex items-center gap-2 group">
-          <div className="p-1 rounded bg-white/10 border border-white/20 group-hover:bg-white/20 group-hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-300">
-            <Code2 className="h-6 w-6 text-white" />
-          </div>
-          <span className="font-headline text-xl font-bold tracking-widest text-white group-hover:text-white transition-colors uppercase">
-            Sarvesh<span className="text-zinc-400">.AI</span>
-          </span>
-        </a>
+        <div className="flex items-center gap-2">
+          {/* Logo removed as per request */}
+        </div>
         <div className="flex items-center gap-6">
           <div className="hidden md:block">
             <CardNav

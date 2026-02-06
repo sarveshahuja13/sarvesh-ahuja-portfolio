@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { ChatbotProvider } from '@/components/chatbot-provider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Chatbot } from '@/components/chatbot';
+import { AttractorBackground } from '@/components/AttractorBackground';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -45,6 +46,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ChatbotProvider>
+            <AttractorBackground />
             {children}
             <Chatbot />
           </ChatbotProvider>
