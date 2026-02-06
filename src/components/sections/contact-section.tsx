@@ -46,6 +46,12 @@ export function ContactSection() {
             </CardDescription>
           </CardHeader>
           <CardContent>
+            {/* Calendly inline widget begin */}
+            <div className="calendly-inline-widget" data-url="https://calendly.com/sarveshahuja13/30min" style={{ minWidth: '320px', height: '700px' }}></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            {/* Calendly inline widget end */}
+
+            {/* 
             {status === 'success' ? (
               <div className="text-center p-8 bg-green-500/10 border border-green-500/30 rounded-lg">
                 <CheckCircle className="mx-auto h-12 w-12 text-green-400 mb-4" />
@@ -98,6 +104,7 @@ export function ContactSection() {
                 </Button>
               </form>
             )}
+            */}
           </CardContent>
         </Card>
       </div>

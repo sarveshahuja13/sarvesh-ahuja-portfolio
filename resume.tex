@@ -1,0 +1,217 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+\usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-10pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADER----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\huge Sarvesh Ahuja} & Email : \href{mailto:sarvesh.ahuja13@gmail.com}{sarvesh.ahuja13@gmail.com}\\
+%   \href{https://linkedin.com/in/sarvesh-ahuja-ai-engineer}{linkedin.com/in/sarvesh-ahuja-ai-engineer} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    {\Huge \scshape Sarvesh Ahuja} \\ \vspace{1pt}
+    \href{https://linkedin.com/in/sarvesh-ahuja-ai-engineer}{\underline{linkedin.com/in/sarvesh-ahuja-ai-engineer}} ~ $\cdot$ ~
+    \href{https://github.com/sarveshahuja13}{\underline{github.com/sarveshahuja13}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {SRM Institute of Science and Technology}{2020 -- 2024}
+      {B.Tech in Computer Science (Artificial Intelligence \& Machine Learning); \textbf{CGPA: 9.00/10.00}}{Chennai, India}
+      \resumeItemListStart
+        \resumeItem{\textbf{Coursework}: Algorithms, NLP, Computer Vision, Deep Learning, Operating Systems, DBMS}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Sun Life Global Solutions}{Aug 2025 -- Present}
+      {Associate Analyst Developer}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{\textbf{Data Mesh Hydration Pipeline - Productionization and Enhancements:} Engineered a production-grade, fault-tolerant Kafka-to-Iceberg hydration pipeline for the enterprise Data Mesh, optimizing reliability by \textbf{97\%} and \textbf{leading cross-team adoption} that resulted in \textbf{145k CAD} annual savings.}
+        \resumeItem{Re-architected partition strategy for \textbf{20M+ records} to align with consumer access patterns, enabling efficient delta processing via AWS Glue \& Athena.}
+        \resumeItem{\textit{\textbf{Tech Stack}: AWS Glue, Lambda, Athena, Kafka, Iceberg, Python}}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Sun Life Global Solutions}{Aug 2024 -- Aug 2025}
+      {Graduate Engineer}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{\textbf{Data Mesh Hydration Pipeline - Implementation:} Developed the initial event-based ingestion framework to Iceberg. Built end-to-end CI/CD pipelines from scratch using \textbf{Jenkins} \& \textbf{Terraform HCP}.}
+        \resumeItem{\textbf{ETL Pipeline - Health Data:} Created custom pipelines for health data (Pillway), reducing data wrangling time from hours to minutes for data scientists.}
+        \resumeItem{\textit{\textbf{Stack}: Jenkins, Terraform HCP, Python, AWS}}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Locuz Enterprise Solutions Ltd}{Jun 2023 -- Sep 2023}
+      {Machine Learning Intern}{Hyderabad, India}
+      \resumeItemListStart
+        \resumeItem{Pioneered an early \textbf{Agentic AI architecture} for conversational analytics, enabling natural language queries over live green energy data when LLM agents were nascent.}
+        \resumeItem{Integrated \textbf{InfluxDB} time-series data with \textbf{Grafana} for real-time monitoring; conceptually designed multi-LLM reviewer systems for cost-optimized reliability.}
+        \resumeItem{\textit{\textbf{Stack}: GPT-4, Gradio, InfluxDB, Grafana, Python}}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{EmotionGPT – AI Therapist Chatbot} $|$ \emph{GPT-4, Whisper, Gradio}}{Oct 2023}
+          \resumeItemListStart
+            \resumeItem{Built a voice-enabled mental wellness chatbot integrating OpenAI's Whisper for ASR and emotion detection capabilities.}
+          \resumeItemListEnd
+          \vspace{-9pt}
+      \resumeProjectHeading
+          {\textbf{IoT Dashboard for Real-Time Data} $|$ \emph{AWS IoT Core, TimestreamDB}}{Jan 2024}
+          \resumeItemListStart
+            \resumeItem{Developed a centralized dashboard to visualize streaming sensor data for flood detection and tank monitoring systems.}
+          \resumeItemListEnd
+          \vspace{-9pt}
+      \resumeProjectHeading
+          {\textbf{Image Segmentation Using MST} $|$ \emph{Python, Computer Vision}}{Mar 2023}
+          \resumeItemListStart
+            \resumeItem{Implemented Kruskal’s Minimum Spanning Tree algorithm to segment images by clustering background/foreground elements.}
+          \resumeItemListEnd
+          \vspace{-9pt}
+      \resumeProjectHeading
+          {\textbf{Optimized Diaspora Evacuation System (ODES)} $|$ \emph{React, Python, Docker}}{May 2024}
+          \resumeItemListStart
+            \resumeItem{Designed a full-stack platform for automated evacuation logistics, calculating optimal flight routes using population data.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, SQL, HTML/CSS} \\
+     \textbf{Cloud \& DevOps}{: AWS (Glue, Athena, Lambda, Step Functions), Terraform, Docker, Jenkins, Kubernetes} \\
+     \textbf{AI \& Machine Learning}{: LLMs, LangChain, Computer Vision, Scikit-learn, Pandas, Gradio} \\
+     \textbf{Frameworks}{: Langchain, PySpark, PyTorch, Next.js, React, Node.js}
+    }}
+ \end{itemize}
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{AWS}: Operationalizing Generative AI (FMOps/LLMOps), Cloud Architecting \\
+     \textbf{NVIDIA}: Transformer-based NLP \& Deep Learning \\
+     \textbf{Google Cloud}: Core Infrastructure Fundamentals
+    }}
+ \end{itemize}
+
+
+\end{document}
